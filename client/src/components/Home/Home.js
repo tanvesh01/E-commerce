@@ -36,8 +36,9 @@ class Home extends Component {
                 <div
                     className={classNames("table__cell", { "active": this.state.fashionOpen })}
                     onMouseEnter={this.toggleFashionOpen}
-                    onMouseLeave={this.toggleFashionOpen}>
-                    <span>A</span>
+                    onMouseLeave={this.toggleFashionOpen}
+                >
+                    <span><h1>A</h1></span>
                 </div>
                 <div
                     className={classNames("table__cell", { "active": this.state.shoesOpen })}
@@ -63,3 +64,5 @@ class Home extends Component {
 }
 
 export default Home;
+/* onMouseEnter={this.toggleFashionOpen}
+                    onMouseLeave={this.toggleFashionOpen} */

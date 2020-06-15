@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Home from "./components/Home/Home";
-import Products from "./components/Products/Products";
-import { Switch, Route, Link } from "react-router-dom"
+import Products from "./containers/Products/Products";
+import { Switch, Route } from "react-router-dom"
 import { connect } from "react-redux";
-import * as actionTypes from "./store/actions/actionTypes"
+//* import * as actionTypes from "./store/actions/actionTypes"
 import * as actions from "./store/actions/authActions";
 import './App.css';
 //let width = window.innerWidth;
@@ -41,7 +41,7 @@ const mapDispatchToProps = (dispatch) => {
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 
-{/* 
+/*{/*
 import Items from "./components/list";
 import Register from "./components/Register";
 import Login from "./components/Login";
@@ -54,4 +54,4 @@ import Login from "./components/Login";
         }} onClick={this.props.logOut}>LOGOUT</button> : <React.Fragment>
             <Register />
             <Login />
-          </React.Fragment>} */}
+          </React.Fragment>} */

@@ -7,9 +7,10 @@
 .table__cell {
     position: relative;
     display: flex;
+    overflow: hidden;
     width: 25%;
     height: 100%;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     transition: width 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -40,11 +41,32 @@
 
 .table__cell span {
     opacity: 0;
-    transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity 800ms cubic-bezier(0.4, 0, 0.2, 1);
     transition-delay: 0;
+    margin-bottom: 100px;
 }
 
 .table__cell.active span {
     opacity: 1;
+    animation: 1s slide-up;
     transition-delay: 300ms;
+}
+
+/* div.slide-up p {
+    animation: 10s slide-up;
+    margin-top: 0%;
+} */
+
+@keyframes slide-up {
+    from {
+        margin-bottom: 10px;
+        /* height: 200%; */
+
+    }
+
+    to {
+
+        margin-top: 100px;
+        /* height: 100%; */
+    }
 }
