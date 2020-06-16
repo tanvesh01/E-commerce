@@ -23,21 +23,17 @@ const useStyles = makeStyles({
         marginBottom: 12,
     },
 });
-
-export default function SimpleCard() {
+function SimpleCard() {
     const classes = useStyles();
-    const bull = <span className={classes.bullet}>•</span>;
 
     return (
         <motion.div initial={{ opacity: 0 }} animate={{ y: -60, opacity: 1 }} transition={{ duration: 1 }}>
             <Card className={classes.root}>
                 <CardContent>
-                    <Typography className={classes.title} color="textSecondary" gutterBottom>
-                        Word of the Day
-        </Typography>
+
                     <Typography variant="h5" component="h2">
-                        be{bull}nev{bull}o{bull}lent
-        </Typography>
+                        {/* {this.props.name} */}
+                    </Typography>
                     <Typography className={classes.pos} color="textSecondary">
                         adjective
         </Typography>
@@ -55,3 +51,5 @@ export default function SimpleCard() {
 
     );
 }
+
+export default SimpleCard;

@@ -20,11 +20,11 @@
 }
 
 .table__cell:nth-child(2) {
-    background-color: #0bbcd6;
+    background-color: #f8fafb;
 }
 
 .table__cell:nth-child(3) {
-    background-color: #b18ae0;
+    background-color: #fefefe;
 }
 
 .table__cell:nth-child(4) {

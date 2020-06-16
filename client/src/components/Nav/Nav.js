@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
@@ -17,7 +16,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 
-const drawerWidth = 240;
+const drawerWidth = 250;
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -30,10 +29,9 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     appBar: {
-        [theme.breakpoints.up('sm')]: {
-            width: `calc(100% - ${drawerWidth}px)`,
-            marginLeft: drawerWidth,
-        },
+        backgroundColor: "white",
+        color: "black",
+        zIndex: theme.zIndex.drawer + 1,
     },
     menuButton: {
         marginRight: theme.spacing(2),
@@ -44,12 +42,23 @@ const useStyles = makeStyles((theme) => ({
     // necessary for content to be below app bar
     toolbar: theme.mixins.toolbar,
     drawerPaper: {
+        marginLeft: "10px",
+        marginTop: "5rem",
+        marginBottom: "20px",
         width: drawerWidth,
+        backgroundColor: "#fafafa",
+        borderRight: "3px solid transparent"
     },
     content: {
         flexGrow: 1,
         padding: theme.spacing(3),
     },
+    filter: {
+        borderRadius: "1.5rem",
+        overflow: 'auto',
+        backgroundColor: "white",
+        boxShadow: "0px 38px 44px 0px rgba(240,240,240,0.68)"
+    }
 }));
 
 function ResponsiveDrawer(props) {
@@ -63,9 +72,8 @@ function ResponsiveDrawer(props) {
     };
 
     const drawer = (
-        <div>
+        <div className={classes.filter}>
             <div className={classes.toolbar} />
-            <Divider />
             <List>
                 {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
                     <ListItem button key={text}>
@@ -103,7 +111,7 @@ function ResponsiveDrawer(props) {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap>
-                        Responsive drawer
+                        Shopify
           </Typography>
                 </Toolbar>
             </AppBar>
@@ -145,13 +153,5 @@ function ResponsiveDrawer(props) {
         </div>
     );
 }
-
-ResponsiveDrawer.propTypes = {
-    /**
-     * Injected by the documentation to work in an iframe.
-     * You won't need it on your project.
-     */
-    window: PropTypes.func,
-};
 
 export default ResponsiveDrawer;

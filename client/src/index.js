@@ -8,6 +8,7 @@ import thunk from 'redux-thunk';
 import item from "./store/Reducers/itemReducer";
 import auth from "./store/Reducers/authReducer";
 import error from "./store/Reducers/errorReducer";
+import category from "./store/Reducers/categoryReducer";
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
@@ -16,7 +17,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers({
   items: item,
   auth: auth,
-  error: error
+  error: error,
+  category: category
 });
 
 const store = createStore(rootReducer, composeEnhancers(

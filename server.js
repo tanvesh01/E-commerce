@@ -11,7 +11,7 @@ mongoose.connect("mongodb://localhost/mern", { useNewUrlParser: true }, function
 app.use('/api/items', items);
 app.use('/api/users', Users);
 app.use('/api/auth', require("./routes/api/Auth"));
-
+app.use('/api/shoes', require("./routes/Categories/Shoes"))
 const port = 5000;
 
-app.listen(port, () => `Server running on port ${port}`);      
+app.listen(port, () => `Server running on port ${port}`);
