@@ -7,14 +7,14 @@ export const load = () => {
     }
 }
 
-export const getShoes = () => {
+export const getItem = (item) => {
     return dispatch => {
         dispatch(load());
-        axios.get('/api/shoes')
+        axios.get('/api/' + item)
             .then(res => {
                 console.log(res.data);
                 dispatch({
-                    type: actionTypes.GET_SHOES,
+                    type: actionTypes.GET_ITEM,
                     data: res.data
                 })
             }).catch(err => {

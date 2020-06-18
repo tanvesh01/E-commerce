@@ -8,10 +8,11 @@ router.get("/", (req, res) => {
 
 // Shoe.create(
 //     {
-//         name: "nikes scott",
+//         name: "nikes air max",
 //         imageLink: "some link",
 //         size: "6/7/8/11/20",
-//         discription: "SICKKO MODE!!"
+//         discription: "SICKKO MODE!!",
+//         category: "ye",
 //     },
 //     function (err, shoe) {
 //         if (err) {

@@ -1,7 +1,7 @@
 import React from 'react';
+import ItemGrid from "../Item/ItemGrid/ItemGrid";
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
@@ -10,19 +10,20 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-
-const drawerWidth = 250;
+import { connect } from "react-redux";
+import * as actions from "../../store/actions/categoryActions";
+const drawerWidth = 300;
 
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
     },
     drawer: {
+
         [theme.breakpoints.up('sm')]: {
             width: drawerWidth,
             flexShrink: 0,
@@ -42,12 +43,12 @@ const useStyles = makeStyles((theme) => ({
     // necessary for content to be below app bar
     toolbar: theme.mixins.toolbar,
     drawerPaper: {
+        padding: "1rem",
         marginLeft: "10px",
         marginTop: "5rem",
         marginBottom: "20px",
         width: drawerWidth,
-        backgroundColor: "#fafafa",
-        borderRight: "3px solid transparent"
+        backgroundColor: "white",
     },
     content: {
         flexGrow: 1,
@@ -75,21 +76,14 @@ function ResponsiveDrawer(props) {
         <div className={classes.filter}>
             <div className={classes.toolbar} />
             <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
-            </List>
-            <Divider />
-            <List>
-                {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
+                <ListItem button onClick={() => props.getItem("shoes")} key={"shoes"}>
+                    <ListItemIcon> <InboxIcon /> </ListItemIcon>
+                    <ListItemText primary={"shoes"} />
+                </ListItem>
+                <ListItem button onClick={() => props.getItem("phones")} key={"phones"}>
+                    <ListItemIcon> <InboxIcon /> </ListItemIcon>
+                    <ListItemText primary={"phones"} />
+                </ListItem>
             </List>
         </div>
     );
@@ -148,10 +142,23 @@ function ResponsiveDrawer(props) {
             </nav>
             <main className={classes.content}>
                 <div className={classes.toolbar} />
-                {props.children}
+                <ItemGrid items={props.items} />
             </main>
         </div>
     );
 }
 
-export default ResponsiveDrawer;
+const mapStateToProps = state => {
+    return {
+        items: state.category.shoes,
+        loading: state.category.loading
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        getItem: (item) => dispatch(actions.getItem(item))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ResponsiveDrawer);

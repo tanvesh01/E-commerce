@@ -1,2 +1,2 @@
-export const GET_SHOES = "GET_SHOES";
+export const GET_ITEM = "GET_ITEM";
 export const LOAD = "LOAD";

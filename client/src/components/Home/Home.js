@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import "./Home.css"
 var classNames = require("classnames");
-
-
 class Home extends Component {
     state = {
         fashionOpen: false,
@@ -34,6 +32,11 @@ class Home extends Component {
         return (
             <div className="table">
                 <div
+                    style={{
+                        backgroundPosition: 'center',
+                        backgroundRepeat: "no-repeat",
+                        backgroundImage: 'url(" https://images.unsplash.com/photo-1505734169265-a86113baa6c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80")'
+                    }}
                     className={classNames("table__cell", { "active": this.state.fashionOpen })}
                     onMouseEnter={this.toggleFashionOpen}
                     onMouseLeave={this.toggleFashionOpen}
@@ -43,7 +46,6 @@ class Home extends Component {
                 <div
                     style={{
                         backgroundPosition: 'center',
-
                         backgroundRepeat: "no-repeat",
                         backgroundImage: 'url(" https://images.unsplash.com/photo-1491553895911-0055eca6402d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80")'
                     }}
@@ -55,9 +57,8 @@ class Home extends Component {
                 <div
                     style={{
                         backgroundPosition: 'center',
-
                         backgroundRepeat: "no-repeat",
-                        backgroundImage: 'url(" https://images.unsplash.com/photo-1586941756923-830029962fd9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80")'
+                        backgroundImage: 'url(" https://images.unsplash.com/photo-1523206489230-c012c64b2b48?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80")'
                     }}
                     className={classNames("table__cell", { "active": this.state.aceesOpen })}
                     onMouseEnter={this.toggleAceesOpen}
@@ -65,6 +66,11 @@ class Home extends Component {
                     <span><h1>C</h1></span>
                 </div>
                 <div
+                    style={{
+
+                        backgroundRepeat: "no-repeat",
+                        backgroundImage: 'url(" https://images.unsplash.com/3/www.madebyvadim.com.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1061&q=80")'
+                    }}
                     className={classNames("table__cell", { "active": this.state.ElectronicsOpen })}
                     onMouseEnter={this.toggleElectronicsOpen}
                     onMouseLeave={this.toggleElectronicsOpen}>

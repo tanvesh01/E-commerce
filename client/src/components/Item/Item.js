@@ -1,50 +1,50 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
+import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { motion } from "framer-motion";
 const useStyles = makeStyles({
     root: {
-        width: "35%",
-        marginTop: "10%"
+        maxWidth: 345,
     },
-    bullet: {
-        display: 'inline-block',
-        margin: '0 2px',
-        transform: 'scale(0.8)',
-    },
-    title: {
-        fontSize: 14,
-    },
-    pos: {
-        marginBottom: 12,
+    media: {
+        height: 140,
     },
 });
-function SimpleCard() {
+const SimpleCard = (props) => {
     const classes = useStyles();
 
     return (
         <motion.div initial={{ opacity: 0 }} animate={{ y: -60, opacity: 1 }} transition={{ duration: 1 }}>
             <Card className={classes.root}>
-                <CardContent>
-
-                    <Typography variant="h5" component="h2">
-                        {/* {this.props.name} */}
+                <CardActionArea>
+                    <CardMedia
+                        className={classes.media}
+                        image="/static/images/cards/contemplative-reptile.jpg"
+                        title="Contemplative Reptile"
+                    />
+                    <CardContent>
+                        <Typography gutterBottom variant="h5" component="h2">
+                            {props.name}
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary" component="p">
+                            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+                            across all continents except Antarctica
                     </Typography>
-                    <Typography className={classes.pos} color="textSecondary">
-                        adjective
-        </Typography>
-                    <Typography variant="body2" component="p">
-                        well meaning and kindly.
-          <br />
-                        {'"a benevolent smile"'}
-                    </Typography>
-                </CardContent>
+                    </CardContent>
+                </CardActionArea>
                 <CardActions>
-                    <Button size="small">Learn More</Button>
+                    <Button size="small" color="primary">
+                        Share
+                    </Button>
+                    <Button size="small" color="primary">
+                        Learn More
+                    </Button>
                 </CardActions>
             </Card>
         </motion.div>

@@ -6,6 +6,9 @@ import { connect } from "react-redux";
 //* import * as actionTypes from "./store/actions/actionTypes"
 import * as actions from "./store/actions/authActions";
 import './App.css';
+import theme from "./theme";
+import { ThemeProvider } from '@material-ui/core/styles'
+import CssBaseline from '@material-ui/core/CssBaseline'
 //let width = window.innerWidth;
 class App extends Component {
   componentDidMount() {
@@ -13,17 +16,17 @@ class App extends Component {
   }
   render() {
     return (
-      <div style={{
-        height: "100%"
-      }}>
-        <Switch>
-          <Route path="/products" component={Products} />
-          <Route path="/" component={Home} />
-        </Switch>
-        {/* <Link to="/">Home</Link>
-        
-        <Link to="/products">Products</Link> */}
-      </div>
+      <ThemeProvider theme={theme} >
+        <CssBaseline />
+        <div style={{
+          height: "100%"
+        }}>
+          <Switch>
+            <Route path="/products" component={Products} />
+            <Route path="/" component={Home} />
+          </Switch>
+        </div>
+      </ThemeProvider>
     )
   };
 }
