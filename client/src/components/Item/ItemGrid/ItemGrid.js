@@ -13,7 +13,7 @@ const ItemGrid = (props) => {
         <div className={classes.root}>
             <Grid container spacing={3}>
                 {
-                    props.items ?
+                    props.items != null ?
                         props.items.map(function (x) {
                             if (x.category != null) {
                                 return <Grid item xs={6} sm={4} key={x.id} >

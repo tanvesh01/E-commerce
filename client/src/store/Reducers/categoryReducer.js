@@ -1,7 +1,8 @@
 import * as actionTypes from "../actions/categoryActionTypes";
 const initState = {
-    shoes: null,
-    loading: false
+    items: null,
+    loading: false,
+    brand: null
 }
 
 const reducer = (state = initState, actions) => {
@@ -16,6 +17,11 @@ const reducer = (state = initState, actions) => {
                 ...state,
                 shoes: actions.data,
                 loading: false
+            }
+        case actionTypes.SET_BRAND:
+            return {
+                ...state,
+                brand: actions.brand
             }
         default:
             return state;

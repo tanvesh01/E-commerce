@@ -16,6 +16,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/categoryActions";
+import BrandList from "./Categories/BrandList";
 const drawerWidth = 300;
 
 const useStyles = makeStyles((theme) => ({
@@ -84,11 +85,14 @@ function ResponsiveDrawer(props) {
                     <ListItemIcon> <InboxIcon /> </ListItemIcon>
                     <ListItemText primary={"phones"} />
                 </ListItem>
+                {/* ::::::::: FILTERS STARTS HERE ::::::::: */}
+                <BrandList items={props.items} />
             </List>
         </div>
     );
 
     const container = window !== undefined ? () => window().document.body : undefined;
+    console.log(props.items);
 
     return (
         <div className={classes.root}>
@@ -150,7 +154,7 @@ function ResponsiveDrawer(props) {
 
 const mapStateToProps = state => {
     return {
-        items: state.category.shoes,
+        items: state.category.items,
         loading: state.category.loading
     }
 }

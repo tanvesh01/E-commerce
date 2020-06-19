@@ -7,6 +7,13 @@ export const load = () => {
     }
 }
 
+export const setBrand = (brand) => {
+    return {
+        type: actionTypes.SET_BRAND,
+        brand: brand
+    }
+}
+
 export const getItem = (item) => {
     return dispatch => {
         dispatch(load());
