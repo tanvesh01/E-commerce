@@ -50,7 +50,7 @@ function BrandList(props) {
                         {
                             distinctBrands ?
                                 distinctBrands.map(function (x) {
-                                    return <ListItem button >
+                                    return <ListItem button onClick={() => props.setBrand(x)} >
                                         <ListItemIcon><InboxIcon /></ListItemIcon>
                                         <ListItemText primary={x} />
                                     </ListItem>
@@ -77,16 +77,10 @@ function BrandList(props) {
     );
 }
 
-const mapStateToProps = (state) => {
-    return {
-        brand: state.category.brand
-    }
-}
-
 const mapDispatchToProps = (dispatch) => {
     return {
         setBrand: (brand) => dispatch(actions.setBrand(brand))
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BrandList)
+export default connect(null, mapDispatchToProps)(BrandList)

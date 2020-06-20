@@ -15,8 +15,8 @@ const reducer = (state = initState, actions) => {
         case actionTypes.GET_ITEM:
             return {
                 ...state,
-                shoes: actions.data,
-                loading: false
+                items: actions.data,
+                loading: false,
             }
         case actionTypes.SET_BRAND:
             return {

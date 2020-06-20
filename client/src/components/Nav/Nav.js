@@ -146,7 +146,7 @@ function ResponsiveDrawer(props) {
             </nav>
             <main className={classes.content}>
                 <div className={classes.toolbar} />
-                <ItemGrid items={props.items} />
+                <ItemGrid items={props.items} brand={props.brand} />
             </main>
         </div>
     );
@@ -155,7 +155,8 @@ function ResponsiveDrawer(props) {
 const mapStateToProps = state => {
     return {
         items: state.category.items,
-        loading: state.category.loading
+        loading: state.category.loading,
+        brand: state.category.brand,
     }
 }
 
