@@ -2,7 +2,9 @@ import * as actionTypes from "../actions/categoryActionTypes";
 const initState = {
     items: null,
     loading: false,
-    brand: null
+    brand: null,
+    maxPrice: 1000,
+    minPrice: 0
 }
 
 const reducer = (state = initState, actions) => {
@@ -22,6 +24,12 @@ const reducer = (state = initState, actions) => {
             return {
                 ...state,
                 brand: actions.brand
+            }
+        case actionTypes.SET_PRICE:
+            return {
+                ...state,
+                minPrice: actions.min,
+                maxPrice: actions.max
             }
         default:
             return state;

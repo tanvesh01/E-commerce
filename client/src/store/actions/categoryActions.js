@@ -14,6 +14,14 @@ export const setBrand = (brand) => {
     }
 }
 
+export const setPrices = (min, max) => {
+    return {
+        type: actionTypes.SET_PRICE,
+        max: max,
+        min: min
+    }
+}
+
 export const getItem = (item) => {
     return dispatch => {
         dispatch(load());

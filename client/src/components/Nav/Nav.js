@@ -17,6 +17,7 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/categoryActions";
 import BrandList from "./Categories/BrandList";
+import PriceSlider from "./Categories/PriceSlider";
 const drawerWidth = 300;
 
 const useStyles = makeStyles((theme) => ({
@@ -87,6 +88,7 @@ function ResponsiveDrawer(props) {
                 </ListItem>
                 {/* ::::::::: FILTERS STARTS HERE ::::::::: */}
                 <BrandList items={props.items} />
+                <PriceSlider />
             </List>
         </div>
     );
@@ -146,7 +148,11 @@ function ResponsiveDrawer(props) {
             </nav>
             <main className={classes.content}>
                 <div className={classes.toolbar} />
-                <ItemGrid items={props.items} brand={props.brand} />
+                <ItemGrid
+                    items={props.items}
+                    brand={props.brand}
+                    minPrice={props.minPrice}
+                    maxPrice={props.maxPrice} />
             </main>
         </div>
     );
@@ -157,6 +163,8 @@ const mapStateToProps = state => {
         items: state.category.items,
         loading: state.category.loading,
         brand: state.category.brand,
+        minPrice: state.category.minPrice,
+        maxPrice: state.category.maxPrice
     }
 }
 
@@ -165,5 +173,4 @@ const mapDispatchToProps = dispatch => {
         getItem: (item) => dispatch(actions.getItem(item))
     }
 }
-
 export default connect(mapStateToProps, mapDispatchToProps)(ResponsiveDrawer);
