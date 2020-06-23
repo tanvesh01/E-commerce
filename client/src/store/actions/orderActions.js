@@ -1,16 +1,17 @@
 import * as actionTypes from "./orderActionTypes";
 
-export const addItem = (item) => {
-    return (dispatch,) => {
-        axios.post('/api/items', item)
-            .then(res => {
-                console.log(res.data);
-                dispatch({
-                    type: actionTypes.ADD,
-                    item: res.data
-                })
-            }).catch(err => {
-                console.log(err);
-            })
+export const addToCart = (name) => {
+    return {
+        type: actionTypes.ADD_TO_CART,
+        data: {
+            name: name
+        }
     }
-};
+}
+
+export const deleteFromCart = (id) => {
+    return {
+        type: actionTypes.DELETE_FROM_CART,
+        id: id
+    }
+}

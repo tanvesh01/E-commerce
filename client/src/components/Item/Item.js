@@ -8,6 +8,8 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { motion } from "framer-motion";
+import { connect } from "react-redux";
+import * as actions from "../../store/actions/orderActions";
 const useStyles = makeStyles({
     root: {
         maxWidth: 345,
@@ -39,8 +41,8 @@ const SimpleCard = (props) => {
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
-                    <Button size="small" color="primary">
-                        Share
+                    <Button size="small" onClick={() => props.addToCart(props.name)} color="primary">
+                        Add to cart
                     </Button>
                     <Button size="small" color="primary">
                         Learn More
@@ -52,4 +54,10 @@ const SimpleCard = (props) => {
     );
 }
 
-export default SimpleCard;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addToCart: (name) => dispatch(actions.addToCart(name))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(SimpleCard);

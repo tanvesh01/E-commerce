@@ -3,7 +3,7 @@ const initState = {
     items: null,
     loading: false,
     brand: null,
-    maxPrice: 1000,
+    maxPrice: 2000,
     minPrice: 0
 }
 

@@ -9,6 +9,7 @@ import item from "./store/Reducers/itemReducer";
 import auth from "./store/Reducers/authReducer";
 import error from "./store/Reducers/errorReducer";
 import category from "./store/Reducers/productReducer";
+import order from "./store/Reducers/ordersReducer";
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
   items: item,
   auth: auth,
   error: error,
-  category: category
+  category: category,
+  orders: order
 });
 
 const store = createStore(rootReducer, composeEnhancers(

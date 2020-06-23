@@ -18,6 +18,7 @@ import { connect } from "react-redux";
 import * as actions from "../../store/actions/products";
 import BrandList from "./Categories/BrandList";
 import PriceSlider from "./Categories/PriceSlider";
+import Cart from "../Cart/Cart";
 const drawerWidth = 300;
 
 const useStyles = makeStyles((theme) => ({
@@ -89,6 +90,7 @@ function ResponsiveDrawer(props) {
                 {/* ::::::::: FILTERS STARTS HERE ::::::::: */}
                 <BrandList items={props.items} />
                 <PriceSlider />
+                <Cart data={props.cart} />
             </List>
         </div>
     );
@@ -160,6 +162,7 @@ function ResponsiveDrawer(props) {
 
 const mapStateToProps = state => {
     return {
+        cart: state.orders.cart,
         items: state.category.items,
         loading: state.category.loading,
         brand: state.category.brand,
