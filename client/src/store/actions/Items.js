@@ -19,7 +19,6 @@ export const addItem = (item) => {
                 ))
             })
     }
-
 };
 
 export const startLoading = () => {

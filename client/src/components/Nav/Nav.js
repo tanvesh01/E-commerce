@@ -15,7 +15,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { connect } from "react-redux";
-import * as actions from "../../store/actions/categoryActions";
+import * as actions from "../../store/actions/products";
 import BrandList from "./Categories/BrandList";
 import PriceSlider from "./Categories/PriceSlider";
 const drawerWidth = 300;
@@ -78,11 +78,11 @@ function ResponsiveDrawer(props) {
         <div className={classes.filter}>
             <div className={classes.toolbar} />
             <List>
-                <ListItem button onClick={() => props.getItem("shoes")} key={"shoes"}>
+                <ListItem button onClick={() => props.getItem("shoe")} key={"shoes"}>
                     <ListItemIcon> <InboxIcon /> </ListItemIcon>
                     <ListItemText primary={"shoes"} />
                 </ListItem>
-                <ListItem button onClick={() => props.getItem("phones")} key={"phones"}>
+                <ListItem button onClick={() => props.getItem("Phone")} key={"phones"}>
                     <ListItemIcon> <InboxIcon /> </ListItemIcon>
                     <ListItemText primary={"phones"} />
                 </ListItem>

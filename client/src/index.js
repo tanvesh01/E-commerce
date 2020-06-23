@@ -8,7 +8,7 @@ import thunk from 'redux-thunk';
 import item from "./store/Reducers/itemReducer";
 import auth from "./store/Reducers/authReducer";
 import error from "./store/Reducers/errorReducer";
-import category from "./store/Reducers/categoryReducer";
+import category from "./store/Reducers/productReducer";
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 

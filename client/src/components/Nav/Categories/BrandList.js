@@ -10,7 +10,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import { connect } from "react-redux"
-import * as actions from "../../../store/actions/categoryActions";
+import * as actions from "../../../store/actions/products";
 const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',

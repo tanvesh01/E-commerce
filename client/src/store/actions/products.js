@@ -25,7 +25,7 @@ export const setPrices = (min, max) => {
 export const getItem = (item) => {
     return dispatch => {
         dispatch(load());
-        axios.get('/api/' + item)
+        axios.get('/api/Product/' + item)
             .then(res => {
                 console.log(res.data);
                 dispatch({

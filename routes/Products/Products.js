@@ -1,12 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const Shoe = require("../../models/Shoes.js");
+const Product = require("../../models/Product.js");
 
-router.get("/", (req, res) => {
-    Shoe.find().then(shoe => res.json(shoe));
+router.get("/:cat", (req, res) => {
+    Product.find({ category: req.params.cat }).then(product => {
+        console.log(product);
+        res.json(product)
+    });
 })
 
-// Shoe.create(
+// Product.create(
 //     {
 //         name: "nikes air max",
 //         imageLink: "some link",
