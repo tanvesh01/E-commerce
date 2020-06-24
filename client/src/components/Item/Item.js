@@ -41,7 +41,7 @@ const SimpleCard = (props) => {
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
-                    <Button size="small" onClick={() => props.addToCart(props.name)} color="primary">
+                    <Button size="small" onClick={() => props.addToCart(props.data)} color="primary">
                         Add to cart
                     </Button>
                     <Button size="small" color="primary">
@@ -56,7 +56,7 @@ const SimpleCard = (props) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addToCart: (name) => dispatch(actions.addToCart(name))
+        addToCart: (data) => dispatch(actions.addToCart(data))
     }
 }
 

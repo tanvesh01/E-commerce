@@ -9,7 +9,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 const ItemGrid = (props) => {
     const classes = useStyles();
-    console.log(props.items)
     return (
         <div className={classes.root}>
             <Grid container spacing={3}>
@@ -22,14 +21,14 @@ const ItemGrid = (props) => {
                                     x.price <= Number(props.maxPrice)) {
 
                                     return <Grid item xs={6} sm={4} key={x._id}>
-                                        <Item name={x.name} />
+                                        <Item data={x} />
                                     </Grid>
                                 }
                             } else {
                                 if (x.price >= Number(props.minPrice) &&
                                     x.price <= Number(props.maxPrice)) {
                                     return <Grid item xs={6} sm={4} key={x._id}>
-                                        <Item name={x.name} />
+                                        <Item data={x} />
                                     </Grid>
                                 }
                             }
