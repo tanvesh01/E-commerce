@@ -8,30 +8,40 @@ class Cart extends Component {
     }
 
     render() {
-        console.log(this.props.data);
-
         return (
-            <ul>
-                {
-                    this.props.data.map(function (x) {
-                        console.log(this);
+            <div>
+                <ul>
+                    {
+                        this.props.data.map(function (x) {
+                            console.log(this);
 
-                        return <li> {x.data.name}
-                            <button
-                                onClick={() => this.props.deleteFromCart(x.data._id)} >
-                                delete
+                            return <li> {x.data.name}
+                                <button
+                                    onClick={() => this.props.deleteFromCart(x.data._id)} >
+                                    delete
                             </button>
-                        </li>
-                    }, this)
-                }
-            </ul>
+                            </li>
+                        }, this)
+                    }
+                </ul>
+                <button
+                    onClick={() => this.props.submitOrder({
+                        name: "tanvesh",
+                        phone: "98765",
+                        address: "996",
+                        pin: 1234,
+                        email: "sarve@gmail.com"
+
+                    })} >Submit</button>
+            </div>
         )
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        deleteFromCart: (id) => dispatch(actions.deleteFromCart(id))
+        deleteFromCart: (id) => dispatch(actions.deleteFromCart(id)),
+        submitOrder: (item) => dispatch(actions.submitOrder(item))
     }
 }
 

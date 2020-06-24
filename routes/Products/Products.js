@@ -4,7 +4,7 @@ const Product = require("../../models/Product.js");
 
 router.get("/:cat", (req, res) => {
     Product.find({ category: req.params.cat }).then(product => {
-        console.log(product);
+        //console.log(product);
         res.json(product)
     });
 })
