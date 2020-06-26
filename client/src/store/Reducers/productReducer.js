@@ -1,10 +1,11 @@
-import * as actionTypes from "../actions/categoryActionTypes";
+import * as actionTypes from "../actions/productActionTypes";
 const initState = {
     items: null,
     loading: false,
     brand: null,
     maxPrice: 2000,
-    minPrice: 0
+    minPrice: 0,
+    selected: null
 }
 
 const reducer = (state = initState, actions) => {
@@ -30,6 +31,11 @@ const reducer = (state = initState, actions) => {
                 ...state,
                 minPrice: actions.min,
                 maxPrice: actions.max
+            }
+        case actionTypes.SET_SELECTED:
+            return {
+                ...state,
+                selected: actions.id
             }
         default:
             return state;

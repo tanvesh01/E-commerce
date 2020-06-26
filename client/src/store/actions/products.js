@@ -1,4 +1,4 @@
-import * as actionTypes from "./categoryActionTypes";
+import * as actionTypes from "./productActionTypes";
 import axios from "axios";
 
 export const load = () => {
@@ -19,6 +19,13 @@ export const setPrices = (min, max) => {
         type: actionTypes.SET_PRICE,
         max: max,
         min: min
+    }
+}
+
+export const setSelect = (id) => {
+    return {
+        type: actionTypes.SET_SELECTED,
+        id: id
     }
 }
 

@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import { motion } from "framer-motion";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/orderActions";
+import * as productActions from "../../store/actions/products";
 const useStyles = makeStyles({
     root: {
         maxWidth: 345,
@@ -20,11 +21,12 @@ const useStyles = makeStyles({
 });
 const SimpleCard = (props) => {
     const classes = useStyles();
+    console.log(props.data._id);
 
     return (
         <motion.div initial={{ opacity: 0 }} animate={{ y: -60, opacity: 1 }} transition={{ duration: 1 }}>
             <Card className={classes.root}>
-                <CardActionArea>
+                <CardActionArea onClick={() => props.setSelect(props.data._id)} >
                     <CardMedia
                         className={classes.media}
                         image="/static/images/cards/contemplative-reptile.jpg"
@@ -32,7 +34,7 @@ const SimpleCard = (props) => {
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
-                            {props.name}
+                            {props.data.name}
                         </Typography>
                         <Typography variant="body2" color="textSecondary" component="p">
                             Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
@@ -56,7 +58,8 @@ const SimpleCard = (props) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addToCart: (data) => dispatch(actions.addToCart(data))
+        addToCart: (data) => dispatch(actions.addToCart(data)),
+        setSelect: (id) => dispatch(productActions.setSelect(id))
     }
 }
 

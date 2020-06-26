@@ -12,5 +12,16 @@ const theme = createMuiTheme({
             },
         },
     },
+    typography: {
+        fontFamily: " 'Jost', sans-serif",
+        // h5: {
+        //     fontWeight: 700,
+        //     fontSize: "2rem",
+        // },
+        // h1: {
+        //     fontFamily: "'Bebas Neue', cursive",
+        //     fontSize: "3rem"
+        // }
+    },
 })
 export default theme

@@ -9,6 +9,7 @@ import './App.css';
 import theme from "./theme";
 import { ThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
+import Selected from "./containers/Selected/Selected"
 //let width = window.innerWidth;
 class App extends Component {
   componentDidMount() {
@@ -23,6 +24,7 @@ class App extends Component {
         }}>
           <Switch>
             <Route path="/products" component={Products} />
+            <Route path="/select" component={Selected} />
             <Route path="/" component={Home} />
           </Switch>
         </div>
@@ -30,7 +32,7 @@ class App extends Component {
     )
   };
 }
-
+//backdrop filter-css \\ half pattern and half blur
 const mapStateToProps = (state) => {
   return { isAuth: state.auth.isAuth }
 }

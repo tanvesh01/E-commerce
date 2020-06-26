@@ -2,7 +2,8 @@ import * as actionTypes from "../actions/actionTypes";
 
 const initState = {
     items: [],
-    loading: false
+    loading: false,
+    selected: null
 }
 
 const reducer = (state = initState, action) => {
