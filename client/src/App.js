@@ -3,7 +3,7 @@ import Home from "./components/Home/Home";
 import Products from "./containers/Products/Products";
 import { Switch, Route } from "react-router-dom"
 import { connect } from "react-redux";
-//* import * as actionTypes from "./store/actions/actionTypes"
+import { AnimatePresence } from "framer-motion"
 import * as actions from "./store/actions/authActions";
 import './App.css';
 import theme from "./theme";
@@ -22,11 +22,13 @@ class App extends Component {
         <div style={{
           height: "100%"
         }}>
-          <Switch>
-            <Route path="/products" component={Products} />
-            <Route path="/select" component={Selected} />
-            <Route path="/" component={Home} />
-          </Switch>
+          <AnimatePresence>
+            <Switch>
+              <Route path="/products" component={Products} />
+              <Route path="/select" component={Selected} />
+              <Route path="/" component={Home} />
+            </Switch>
+          </AnimatePresence>
         </div>
       </ThemeProvider>
     )

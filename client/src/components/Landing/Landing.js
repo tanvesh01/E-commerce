@@ -26,8 +26,8 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: "2rem",
         marginTop: "5rem",
         width: "50%",
-        height: "100%"
-        , position: "absolute",
+        height: "100%",
+        position: "absolute",
         backdropFilter: "saturate(180%) blur(7px)",
         backgroundColor: "rgba(241, 242, 249, 0.25)"
     },

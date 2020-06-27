@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { motion } from "framer-motion";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom"
 import * as actions from "../../store/actions/orderActions";
 import * as productActions from "../../store/actions/products";
 const useStyles = makeStyles({
@@ -26,10 +27,10 @@ const SimpleCard = (props) => {
     return (
         <motion.div initial={{ opacity: 0 }} animate={{ y: -60, opacity: 1 }} transition={{ duration: 1 }}>
             <Card className={classes.root}>
-                <CardActionArea onClick={() => props.setSelect(props.data._id)} >
+                <CardActionArea onClick={() => props.setSelect(props.data._id)} component={Link} to="/select" >
                     <CardMedia
                         className={classes.media}
-                        image="/static/images/cards/contemplative-reptile.jpg"
+                        image={props.data.imageLink}
                         title="Contemplative Reptile"
                     />
                     <CardContent>
