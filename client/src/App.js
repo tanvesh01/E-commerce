@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Home from "./components/Home/Home";
 import Products from "./containers/Products/Products";
-import { Switch, Route } from "react-router-dom"
+import { Switch, Route, useLocation } from "react-router-dom"
 import { connect } from "react-redux";
 import { AnimatePresence } from "framer-motion"
 import * as actions from "./store/actions/authActions";
@@ -11,28 +11,25 @@ import { ThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Selected from "./containers/Selected/Selected"
 //let width = window.innerWidth;
-class App extends Component {
-  componentDidMount() {
-    this.props.loadUser();
-  }
-  render() {
-    return (
-      <ThemeProvider theme={theme} >
-        <CssBaseline />
-        <div style={{
-          height: "100%"
-        }}>
-          <AnimatePresence>
-            <Switch>
-              <Route path="/products" component={Products} />
-              <Route path="/select" component={Selected} />
-              <Route path="/" component={Home} />
-            </Switch>
-          </AnimatePresence>
-        </div>
-      </ThemeProvider>
-    )
-  };
+function App(props) {
+  const location = useLocation();
+  return (
+    <ThemeProvider theme={theme} >
+      <CssBaseline />
+      <div style={{
+        height: "100%"
+      }}>
+        <AnimatePresence exitBeforeEnter initial={false}>
+          <Switch location={location} key={location.pathname}>
+            <Route path="/products" component={Products} />
+            <Route path="/select" component={Selected} />
+            <Route path="/" component={Home} />
+          </Switch>
+        </AnimatePresence>
+      </div>
+    </ThemeProvider>
+  )
+
 }
 //backdrop filter-css \\ half pattern and half blur
 const mapStateToProps = (state) => {

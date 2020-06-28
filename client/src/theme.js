@@ -12,6 +12,13 @@ const theme = createMuiTheme({
             },
         },
     },
+    // props: {
+    //     // Name of the component
+    //     MuiButtonBase: {
+    //         // The properties to apply
+    //         disableRipple: true // No more ripple, on the whole application!
+    //     }
+    // },
     typography: {
         fontFamily: " 'Jost', sans-serif",
         // h5: {

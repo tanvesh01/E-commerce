@@ -40,7 +40,7 @@ export default function Landing() {
     const classes = useStyles();
     return (
         <div className={classes.root}>
-            <div className={classes.outer}><img width="100%" height="100%" src={BgImage} />
+            <div className={classes.outer}><img width="100%" height="100%" src={BgImage} alt="landing" />
                 <div className={classes.inner}>
                     <Typography variant="h1" className={classes.head} >
                         Welcome to the new age of shopping

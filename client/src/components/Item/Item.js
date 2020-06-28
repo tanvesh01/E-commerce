@@ -17,41 +17,80 @@ const useStyles = makeStyles({
         maxWidth: 345,
     },
     media: {
-        height: 140,
+        height: 240,
     },
+    actionArea: {
+        "&:hover $focusHighlight": {
+            opacity: 0
+        }
+    },
+    focusHighlight: {}
 });
+//============= framer =================
+const transition = { duration: 0.5, ease: [0.43, 0.13, 0.23, 0.96] };
+
+const thumbnailVariants = {
+    initial: { scale: 0.9, opacity: 0 },
+    enter: { scale: 1, opacity: 1, transition },
+    exit: {
+        scale: 0.5,
+        opacity: 0,
+        transition: { duration: 1.5, ...transition }
+    }
+};
+
+const frameVariants = {
+    hover: { scale: 0.95 }
+};
+
+const imageVariants = {
+    hover: { scale: 1.1 }
+};
+
+// ===================
 const SimpleCard = (props) => {
     const classes = useStyles();
     console.log(props.data._id);
 
     return (
-        <motion.div initial={{ opacity: 0 }} animate={{ y: -60, opacity: 1 }} transition={{ duration: 1 }}>
-            <Card className={classes.root}>
-                <CardActionArea onClick={() => props.setSelect(props.data._id)} component={Link} to="/select" >
-                    <CardMedia
-                        className={classes.media}
-                        image={props.data.imageLink}
-                        title="Contemplative Reptile"
-                    />
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="h2">
-                            {props.data.name}
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                            across all continents except Antarctica
-                    </Typography>
-                    </CardContent>
-                </CardActionArea>
-                <CardActions>
-                    <Button size="small" onClick={() => props.addToCart(props.data)} color="primary">
-                        Add to cart
+        <motion.div variants={thumbnailVariants}>
+            <motion.div className="frame"
+                whileHover="hover"
+                variants={frameVariants}
+                transition={transition}>
+                <Card className={classes.root}>
+                    <CardActionArea disableRipple disableTouchRipple classes={{
+                        root: classes.actionArea,
+                        focusHighlight: classes.focusHighlight
+                    }} onClick={() => props.setSelect(props.data._id)} component={Link} to="/select" >
+                        <motion.div variants={imageVariants}
+                            transition={transition}>
+                            <CardMedia
+                                className={classes.media}
+                                image={props.data.imageLink}
+                                title="Contemplative Reptile"
+                            />
+                        </motion.div>
+
+                        <CardContent >
+                            <Typography gutterBottom variant="h5" component="h2">
+                                {props.data.name}
+                            </Typography>
+                            <Typography variant="body2" color="textSecondary" component="p">
+                                {props.data.price}
+                            </Typography>
+                        </CardContent>
+                    </CardActionArea>
+                    <CardActions>
+                        <Button size="small" onClick={() => props.addToCart(props.data)} color="primary">
+                            Add to cart
                     </Button>
-                    <Button size="small" color="primary">
-                        Learn More
+                        <Button size="small" color="primary">
+                            Learn More
                     </Button>
-                </CardActions>
-            </Card>
+                    </CardActions>
+                </Card>
+            </motion.div>
         </motion.div>
 
     );
@@ -65,3 +104,4 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(null, mapDispatchToProps)(SimpleCard);
+// initial={{ opacity: 0 }} animate={{ y: -60, opacity: 1 }} transition={{ duration: 1 }}

@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import Nav from "../../components/Nav/Nav"
 
 class Products extends Component {
+    // componentDidMount() {
+    //     this.props.loadUser();
+    // }
     render() {
         console.log(this.props.shoes);
         return (

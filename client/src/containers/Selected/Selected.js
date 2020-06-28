@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { makeStyles } from "@material-ui/core/styles";
 import { motion } from "framer-motion"
 import { connect } from "react-redux";
@@ -11,16 +11,30 @@ const useStyles = makeStyles((theme) => ({
     imageContent: {
         width: "100%",
         height: "100vh",
-        backgroundColor: "grey",
     }
 }))
+
+const transition = {
+    duration: 1,
+    ease: [0.43, 0.13, 0.23, 0.96]
+};
+
+const imageVariants = {
+    exit: { y: "50%", opacity: 0, transition },
+    enter: {
+        y: "0%",
+        opacity: 1,
+        transition
+    }
+};
+
 
 function Selected(props) {
     console.log(props.items);
     let prod
     for (let i = 0; i < props.items.length; i++) {
 
-        if (props.items[i]._id == props.selectedId) {
+        if (props.items[i]._id === props.selectedId) {
             prod = props.items[i];
         }
     }
@@ -29,9 +43,9 @@ function Selected(props) {
         <div className={classes.root}>
             <Grid container  >
                 <Grid item xs={6}>
-                    <div className={classes.imageContent} style={{
-                        backgroundImage: prod.imageLink
-                    }} ><img style={{ objectFit: "cover" }} width="100%" height="100%" src={prod.imageLink} /></div>
+                    <motion.div initial="exit" animate="enter" exit="exit" className={classes.imageContent}  >
+                        <motion.img variants={imageVariants} style={{ objectFit: "cover" }} width="100%" height="100%" src={prod.imageLink} />
+                    </motion.div>
                 </Grid>
                 <Grid item xs={6}>
                     <div>
