@@ -20,6 +20,8 @@ import BrandList from "./Categories/BrandList";
 import PriceSlider from "./Categories/PriceSlider";
 import Cart from "../Cart/Cart";
 import Landing from "../Landing/Landing";
+import Register from "../Register";
+import Login from "../Login";
 const drawerWidth = 300;
 
 const useStyles = makeStyles((theme) => ({
@@ -105,6 +107,8 @@ function ResponsiveDrawer(props) {
                 <BrandList items={props.items} />
                 <PriceSlider />
                 <Cart data={props.cart} />
+                <Login />
+                <Register />
             </List>
         </div>
     );

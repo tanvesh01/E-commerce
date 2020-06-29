@@ -12,10 +12,10 @@ router.post("/", (req, res) => {
         email: req.body.email
     })
     newOrder.save()
-    then(order => {
-        console.log(order);
-        res.json(order);
-    })
+        .then(order => {
+            console.log(order);
+            res.json(order);
+        })
 })
 
 router.get("/", (req, res) => {
