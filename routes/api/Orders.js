@@ -4,7 +4,7 @@ const Order = require("../../models/Order");
 
 router.post("/", (req, res) => {
     const newOrder = new Order({
-        products: ["5eea56663c13366050a5c1ab"],
+        products: req.body.products,
         name: req.body.name,
         phone: req.body.phone,
         address: req.body.address,

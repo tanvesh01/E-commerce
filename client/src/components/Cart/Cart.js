@@ -6,16 +6,29 @@ class Cart extends Component {
     deleteItem = (id) => {
         this.props.deleteFromCart(id);
     }
+    submit = () => {
+        let ids = [];
+        for (let i = 0; i < this.props.cart.length; i++) {
+            ids.push(this.props.cart[i].data._id);
+        }
+        this.props.submitOrder({
+            products: ids,
+            name: "tanvesh",
+            phone: "98765",
+            address: "996",
+            pin: 1234,
+            email: "sarve@gmail.com"
 
+        });
+    }
     render() {
+        console.log(this.props.cart);
         return (
             <div>
                 <ul>
                     {
                         this.props.data.map(function (x) {
-                            console.log(this);
-
-                            return <li> {x.data.name}
+                            return <li key={x.data._id}> {x.data.name}
                                 <button
                                     onClick={() => this.props.deleteFromCart(x.data._id)} >
                                     delete
@@ -25,16 +38,15 @@ class Cart extends Component {
                     }
                 </ul>
                 <button
-                    onClick={() => this.props.submitOrder({
-                        name: "tanvesh",
-                        phone: "98765",
-                        address: "996",
-                        pin: 1234,
-                        email: "sarve@gmail.com"
-
-                    })} >Submit</button>
+                    onClick={() => this.submit()} >Submit</button>
             </div>
         )
+    }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        cart: state.orders.cart
     }
 }
 
@@ -45,4 +57,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(Cart);
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);
