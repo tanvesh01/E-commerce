@@ -10,6 +10,7 @@ import theme from "./theme";
 import { ThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Selected from "./containers/Selected/Selected"
+
 //let width = window.innerWidth;
 function App(props) {
   const location = useLocation();
@@ -19,6 +20,7 @@ function App(props) {
       <div style={{
         height: "100%"
       }}>
+
         <AnimatePresence exitBeforeEnter initial={false}>
           <Switch location={location} key={location.pathname}>
             <Route path="/products" component={Products} />

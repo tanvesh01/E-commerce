@@ -47,10 +47,40 @@ function Selected(props) {
     console.log(props.items);
     let prod
     for (let i = 0; i < props.items.length; i++) {
-
         if (props.items[i]._id === props.selectedId) {
             prod = props.items[i];
         }
+    }
+    const parentVariant = {
+        hidden: {
+            opacity: 0,
+            y: '50%',
+            transition: {
+                delay: 1,
+                staggerChildren: 0.5,
+            }
+        },
+        visible: {
+            opacity: 1,
+            y: "0%",
+            transition: {
+                // type: 'spring',
+                // mass: 0.4,
+                // damping: 8,
+                delay: 1,
+                duration: 1,
+                staggerChildren: 0.4,
+                when: "beforeChildren",
+            }
+        },
+    }
+
+    const childVariant = {
+        hidden: { opacity: 0, y: "50%" }, visible: {
+            y: "0%", opacity: 1, transition: {
+                duration: 1
+            }
+        },
     }
     const classes = useStyles();
     return (
@@ -62,17 +92,18 @@ function Selected(props) {
                     </motion.div>
                 </Grid>
                 <Grid item xs={6}>
-                    <motion.div initial="exit" animate="enter" exit="exit" >
-                        <motion.div className={classes.name} initial={{ opacity: 0, y: "50%" }} exit={{ opacity: 0, y: "50%" }} animate={{ y: "0%", opacity: 1 }} transition={{ delay: 1, duration: 2 }}>
+                    <motion.div initial="hidden" animate="visible" exit="hidden" >
+                        <motion.div className={classes.name} variants={parentVariant} >
                             <Typography variant="h3"  >
                                 {prod.name}
                             </Typography>
+                            <motion.div className={classes.price} variants={childVariant} >
+                                <Typography variant="h3"  >
+                                    $ {prod.price}
+                                </Typography>
+                            </motion.div>
                         </motion.div>
-                        <motion.div className={classes.price} initial={{ opacity: 0, y: "50%" }} animate={{ y: "0%", opacity: 1 }} transition={{ delay: 1.2, duration: 2 }}>
-                            <Typography variant="h3"  >
-                                $ {prod.price}
-                            </Typography>
-                        </motion.div>
+
                     </motion.div>
                 </Grid>
             </Grid>

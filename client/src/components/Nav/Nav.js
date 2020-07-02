@@ -15,6 +15,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { connect } from "react-redux";
+import { motion } from "framer-motion";
 import * as actions from "../../store/actions/products";
 import BrandList from "./Categories/BrandList";
 import PriceSlider from "./Categories/PriceSlider";
@@ -81,6 +82,8 @@ const useStyles = makeStyles((theme) => ({
     appBarSpacer: theme.mixins.toolbar
 }));
 
+
+
 function ResponsiveDrawer(props) {
     const { window } = props;
     const classes = useStyles();
@@ -90,15 +93,25 @@ function ResponsiveDrawer(props) {
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
-
+    const catergoryVariants = {
+        hover: {
+            scale: 0.98, originX: 0
+        },
+    }
     const drawer = (
         <div className={classes.filter}>
             <div className={classes.toolbar} />
             <List>
-                <ListItem button onClick={() => props.getItem("shoe")} key={"shoes"}>
-                    <ListItemIcon> <InboxIcon /> </ListItemIcon>
-                    <ListItemText primary={"shoes"} />
-                </ListItem>
+                <motion.div variants={catergoryVariants} whileHover="hover">
+                    <ListItem button onClick={() => props.getItem("shoe")} key={"shoes"}>
+                        <motion.div
+                            style={{ width: "100%", display: "flex" }}
+                            whileHover={{ scale: 1.3, originX: 0, originY: 0 }}>
+                            <ListItemIcon> <InboxIcon /> </ListItemIcon>
+                            <ListItemText primary={"shoes"} />
+                        </motion.div>
+                    </ListItem>
+                </motion.div>
                 <ListItem button onClick={() => props.getItem("Phone")} key={"phones"}>
                     <ListItemIcon> <InboxIcon /> </ListItemIcon>
                     <ListItemText primary={"phones"} />
