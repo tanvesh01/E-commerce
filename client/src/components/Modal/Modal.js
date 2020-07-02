@@ -2,8 +2,16 @@ import React from 'react';
 import { makeStyles } from "@material-ui/core/styles"
 import { motion, AnimatePresence } from "framer-motion"
 import Grid from '@material-ui/core/Grid';
-
+import Cart from "../Cart/Scart";
 const useStyles = makeStyles((theme) => ({
+    root: {
+        top: 0,
+        left: 0,
+        position: "fixed",
+        width: "100%",
+        height: "100%",
+        zIndex: "2000",
+    },
     backdrop: {
         zIndex: "2000",
         top: 0,
@@ -14,13 +22,6 @@ const useStyles = makeStyles((theme) => ({
         backdropFilter: "saturate(138%) blur(3px)",
         backgroundColor: "rgba(241, 242, 249, 0.25)",
     },
-    cart: {
-        width: "100%",
-        height: "100%",
-        backgroundColor: "white",
-        margin: "3rem",
-        borderRadius: "2.5rem"
-    }
 }))
 
 const backdrop = {
@@ -47,25 +48,25 @@ function Modal(props) {
     return (
         <AnimatePresence exitBeforeEnter >
             {props.show ?
-                <motion.div
-                    variants={backdrop}
-                    initial="hidden"
-                    animate="visible"
-                    exit="exit"
-                    onClick={props.modalHandler}
-                    className={classes.backdrop}>
-
+                <div className={classes.root}>
                     <Grid container spacing={3} style={{ height: "100%" }}>
                         <Grid item xs={6}>
                             <h3>next</h3>
                         </Grid>
                         <Grid item xs={6}  >
-                            <motion.div className={classes.cart}>
-
-                            </motion.div>
+                            <Cart />
                         </Grid>
                     </Grid>
-                </motion.div> : null
+                    <motion.div
+                        variants={backdrop}
+                        initial="hidden"
+                        animate="visible"
+                        exit="exit"
+                        onClick={props.modalHandler}
+                        className={classes.backdrop} />
+                </div>
+
+                : null
             }
         </AnimatePresence>
     )
