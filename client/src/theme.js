@@ -25,10 +25,10 @@ const theme = createMuiTheme({
         //     fontWeight: 700,
         //     fontSize: "2rem",
         // },
-        // h1: {
-        //     fontFamily: "'Bebas Neue', cursive",
-        //     fontSize: "3rem"
-        // }
+        h1: {
+            fontFamily: "'Montserrat', sans-serif",
+            fontSize: "3rem"
+        }
     },
 })
 export default theme

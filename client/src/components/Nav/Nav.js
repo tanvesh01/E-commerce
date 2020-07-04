@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
         backdropFilter: "saturate(180%) blur(7px)",
         backgroundColor: "rgba(241, 242, 249, 0.25)",
         color: "black",
-        zIndex: theme.zIndex.drawer + 1,
+        zIndex: 99,
     },
     menuButton: {
         marginRight: theme.spacing(2),

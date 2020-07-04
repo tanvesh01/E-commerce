@@ -4,16 +4,8 @@ import { motion, AnimatePresence } from "framer-motion"
 import Grid from '@material-ui/core/Grid';
 import Cart from "../Cart/Scart";
 const useStyles = makeStyles((theme) => ({
-    root: {
-        top: 0,
-        left: 0,
-        position: "fixed",
-        width: "100%",
-        height: "100%",
-        zIndex: "2000",
-    },
     backdrop: {
-        zIndex: "2000",
+        zIndex: "100",
         top: 0,
         left: 0,
         position: "fixed",
@@ -22,6 +14,12 @@ const useStyles = makeStyles((theme) => ({
         backdropFilter: "saturate(138%) blur(3px)",
         backgroundColor: "rgba(241, 242, 249, 0.25)",
     },
+    cartModel: {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100%"
+    }
 }))
 
 const backdrop = {
@@ -48,15 +46,7 @@ function Modal(props) {
     return (
         <AnimatePresence exitBeforeEnter >
             {props.show ?
-                <div className={classes.root}>
-                    <Grid container spacing={3} style={{ height: "100%" }}>
-                        <Grid item xs={6}>
-                            <h3>next</h3>
-                        </Grid>
-                        <Grid item xs={6}  >
-                            <Cart />
-                        </Grid>
-                    </Grid>
+                <React.Fragment>
                     <motion.div
                         variants={backdrop}
                         initial="hidden"
@@ -64,7 +54,11 @@ function Modal(props) {
                         exit="exit"
                         onClick={props.modalHandler}
                         className={classes.backdrop} />
-                </div>
+                    <div className={classes.cartModel} >
+
+                        <Cart />
+                    </div>
+                </React.Fragment>
 
                 : null
             }
