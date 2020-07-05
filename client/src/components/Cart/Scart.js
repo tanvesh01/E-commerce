@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles"
 import { motion, AnimatePresence } from "framer-motion"
 import Typography from '@material-ui/core/Typography';
 import Grid from "@material-ui/core/Grid"
+import Product from "./Product/Product"
 import { connect } from "react-redux"
 const useStyles = makeStyles((theme) => ({
     cart: {
@@ -40,12 +41,15 @@ const useStyles = makeStyles((theme) => ({
         zIndex: 600
     },
     labels: {
-        textAlign: "center"
+        textAlign: "center",
+        height: "3rem"
     }
 }))
 
-function Cart() {
+function Cart(props) {
     const classes = useStyles();
+    console.log(props.cart);
+
     return (
         <motion.div className={classes.cart}>
             <div className={classes.header} >
@@ -64,8 +68,17 @@ function Cart() {
                 <Grid className={classes.labels} xs={6} >
                     <p>Price</p>
                 </Grid>
-                <Grid className={classes.product} xs={6} item ></Grid>
-                <Grid item className={classes.price} xs={6} ></Grid>
+                {props.cart.map(function (x) {
+                    return <>
+                        <Grid className={classes.product} xs={6} item >
+                            <Product name={x.data.name} image={x.data.imageLink} />
+                        </Grid>
+                        <Grid item className={classes.price} xs={6} >
+                            {x.data.price}
+                        </Grid>
+                    </>
+                })}
+
             </Grid>
         </motion.div>
     )
@@ -77,11 +90,11 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        deleteFromCart: (id) => dispatch(actions.deleteFromCart(id)),
-        submitOrder: (item) => dispatch(actions.submitOrder(item))
-    }
-}
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         deleteFromCart: (id) => dispatch(actions.deleteFromCart(id)),
+//         submitOrder: (item) => dispatch(actions.submitOrder(item))
+//     }
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cart);
+export default connect(mapStateToProps, null)(Cart);

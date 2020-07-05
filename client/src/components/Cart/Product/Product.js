@@ -6,21 +6,24 @@ const useStyles = makeStyles((theme) => ({
 
     root: {
         width: "100%",
-        height: "100%"
+        height: "6rem"
     },
     image: {
-
-    }
+        overflow: "hidden"
+    },
 }))
 function Product(props) {
+    const classes = useStyles();
     return (
         <React.Fragment>
-            <Grid container >
-                <Grid item >
-                    <div className={classes.image}> <img src={props.imageLink} alt="Image of the Produvt" /> </div>
+            <Grid container className={classes.root}>
+                <Grid item xs={6} >
+                    <div className={classes.image}> <img className={classes.inImage} src={props.image} alt="Image of the Produvt" /> </div>
                 </Grid>
-                <Grid item > </Grid>
+                <Grid item xs={6} > {props.name} </Grid>
             </Grid>
         </React.Fragment>
     )
 }
+
+export default Product;
