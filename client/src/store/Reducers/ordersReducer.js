@@ -1,7 +1,8 @@
 import * as actionTypes from "../actions/orderActionTypes";
 
 const initState = {
-    cart: []
+    cart: [],
+    showCart: false
 }
 
 const reducer = (state = initState, action) => {
@@ -16,6 +17,11 @@ const reducer = (state = initState, action) => {
             return {
                 ...state,
                 cart: state.cart.filter(p => p.data._id !== action.id)
+            }
+        case actionTypes.TOGGLE_CART:
+            return {
+                ...state,
+                showCart: !state.showCart
             }
         default:
             return state

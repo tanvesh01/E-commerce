@@ -18,7 +18,7 @@ function Product(props) {
         <React.Fragment>
             <Grid container className={classes.root}>
                 <Grid item xs={6} >
-                    <div className={classes.image}> <img className={classes.inImage} src={props.image} alt="Image of the Produvt" /> </div>
+                    <div className={classes.image}> <img className={classes.inImage} src={props.image} alt="of the Produvt" /> </div>
                 </Grid>
                 <Grid item xs={6} > {props.name} </Grid>
             </Grid>

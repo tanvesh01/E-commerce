@@ -35,3 +35,9 @@ export const deleteFromCart = (id) => {
         id: id
     }
 }
+
+export const toggleCart = () => {
+    return {
+        type: actionTypes.TOGGLE_CART
+    }
+}

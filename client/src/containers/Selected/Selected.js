@@ -29,11 +29,7 @@ const transition = {
     duration: 1,
     ease: [0.43, 0.13, 0.23, 0.96]
 };
-const transition1 = {
-    duration: 5,
-    delay: 2
-    // ease: [0.43, 0.13, 1.23, 1.96]
-};
+
 const imageVariants = {
     exit: { x: "50%", opacity: 0, transition },
     enter: {

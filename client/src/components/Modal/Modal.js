@@ -1,7 +1,6 @@
 import React from 'react';
 import { makeStyles } from "@material-ui/core/styles"
 import { motion, AnimatePresence } from "framer-motion"
-import Grid from '@material-ui/core/Grid';
 import Cart from "../Cart/Scart";
 const useStyles = makeStyles((theme) => ({
     backdrop: {
