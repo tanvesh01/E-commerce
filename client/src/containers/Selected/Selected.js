@@ -39,6 +39,42 @@ const imageVariants = {
     }
 };
 
+const parentVariant = {
+    hidden: {
+        opacity: 0,
+        y: '50%',
+        transition: {
+            delay: 0,
+            staggerChildren: 0.5,
+            duration: 1
+        }
+    },
+    visible: {
+        opacity: 1,
+        y: "0%",
+        transition: {
+            // type: 'spring',
+            // mass: 0.4,
+            // damping: 8,
+            delay: 1,
+            duration: 1,
+            staggerChildren: 0.4,
+            // when: "beforeChildren",
+        }
+    },
+}
+
+const childVariant = {
+    hidden: { opacity: 0, y: "50%" },
+    visible: {
+        y: "0%",
+        opacity: 1,
+        transition: {
+            duration: 1
+        }
+    },
+}
+
 function Selected(props) {
     console.log(props.items);
     let prod
@@ -47,37 +83,7 @@ function Selected(props) {
             prod = props.items[i];
         }
     }
-    const parentVariant = {
-        hidden: {
-            opacity: 0,
-            y: '50%',
-            transition: {
-                delay: 1,
-                staggerChildren: 0.5,
-            }
-        },
-        visible: {
-            opacity: 1,
-            y: "0%",
-            transition: {
-                // type: 'spring',
-                // mass: 0.4,
-                // damping: 8,
-                delay: 1,
-                duration: 1,
-                staggerChildren: 0.4,
-                when: "beforeChildren",
-            }
-        },
-    }
 
-    const childVariant = {
-        hidden: { opacity: 0, y: "50%" }, visible: {
-            y: "0%", opacity: 1, transition: {
-                duration: 1
-            }
-        },
-    }
     const classes = useStyles();
     return (
         <div className={classes.root}>

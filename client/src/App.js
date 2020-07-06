@@ -21,7 +21,7 @@ function App(props) {
         height: "100%"
       }}>
 
-        <AnimatePresence exitBeforeEnter initial={false}>
+        <AnimatePresence exitBeforeEnter >
           <Switch location={location} key={location.pathname}>
             <Route path="/products" component={Products} />
             <Route path="/select" component={Selected} />

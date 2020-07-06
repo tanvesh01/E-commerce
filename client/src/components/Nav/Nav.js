@@ -127,10 +127,32 @@ function ResponsiveDrawer(props) {
     );
 
     const container = window !== undefined ? () => window().document.body : undefined;
-    console.log(props.items);
+    const rootVariant = {
+        hidden: {
+            opacity: 0
+        },
+        animate: {
+            opacity: 1,
+            transition: {
+                delay: 1,
+                duration: 1.5
+            }
+        },
+        exit: {
+            opacity: 0,
+            transition: {
+                duration: 1
+            }
+        }
+    }
 
     return (
-        <div className={classes.root}>
+        <motion.div
+            variants={rootVariant}
+            initial="hidden"
+            animate="animate"
+            exit="exit"
+            className={classes.root}>
             <CssBaseline />
             <AppBar className={classes.appBar}>
                 <Toolbar>
@@ -192,7 +214,7 @@ function ResponsiveDrawer(props) {
                         maxPrice={props.maxPrice} />
                 </main>
             </div>
-        </div>
+        </motion.div>
     );
 }
 
