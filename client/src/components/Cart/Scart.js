@@ -27,29 +27,41 @@ const useStyles = makeStyles((theme) => ({
     svg: {
         position: "absolute",
         width: "100%",
-        height: "100%",
+        height: "50%",
         zIndex: 1,
-        marginRight: "1rem"
     },
     info: {
-        position: "absolute",
         width: "100%",
-        height: "100%",
-        marginTop: "2rem",
+        height: "5%",
+        marginTop: "3rem",
         backgroundColor: "transparent",
         border: "2px solid purple",
-        zIndex: 600
+        zIndex: 600,
+        display: "block",
+        position: "relative"
     },
     labels: {
         textAlign: "center",
         height: "3rem"
+    },
+    row: {
+        display: "flex",
+        flexDirection: "row",
+        width: "100%"
+    },
+    col: {
+        display: "flex",
+        flexDirection: "column",
+        flexBasis: "100%",
+        flex: 1
+    },
+    product: {
+        display: "block"
     }
 }))
 
 function Cart(props) {
     const classes = useStyles();
-    console.log(props.cart);
-
     return (
         <motion.div className={classes.cart}>
             <div className={classes.header} >
@@ -58,28 +70,33 @@ function Cart(props) {
                         My Cart
                     </Typography>
                 </div>
-                <div className={classes.svg} ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffe8df" fill-opacity="1" d="M0,320L40,277.3C80,235,160,149,240,144C320,139,400,213,480,229.3C560,245,640,203,720,208C800,213,880,267,960,293.3C1040,320,1120,320,1200,304C1280,288,1360,256,1400,240L1440,224L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"></path></svg>
+                <div className={classes.svg} >
+                    <svg style={{ display: "block" }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffe8df" fill-opacity="1" d="M0,320L40,277.3C80,235,160,149,240,144C320,139,400,213,480,229.3C560,245,640,203,720,208C800,213,880,267,960,293.3C1040,320,1120,320,1200,304C1280,288,1360,256,1400,240L1440,224L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"></path></svg>
                 </div>
             </div>
-            <Grid className={classes.info} container >
-                <Grid className={classes.labels} xs={6} >
-                    <p>Products</p>
-                </Grid>
-                <Grid className={classes.labels} xs={6} >
-                    <p>Price</p>
-                </Grid>
+            <div className={classes.info} >
+                <div className={classes.row}>
+                    <div className={`${classes.col} ${classes.labels}`}  >
+                        <p>Products</p>
+                    </div>
+                    <div className={`${classes.col} ${classes.labels}`}  >
+                        <p>Price</p>
+                    </div>
+                </div>
+            </div>
+            <div className={classes.product}>
                 {props.cart.map(function (x) {
-                    return <>
-                        <Grid className={classes.product} xs={6} item >
+                    return <div className={classes.row} >
+                        <div className={classes.col} >
                             <Product name={x.data.name} image={x.data.imageLink} />
-                        </Grid>
-                        <Grid item className={classes.price} xs={6} >
+                        </div>
+                        <div className={`${classes.price} ${classes.col}`}  >
                             {x.data.price}
-                        </Grid>
-                    </>
+                        </div>
+                    </div>
                 })}
+            </div>
 
-            </Grid>
         </motion.div>
     )
 }

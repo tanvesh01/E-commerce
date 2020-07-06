@@ -18,7 +18,6 @@ class Cart extends Component {
             address: "996",
             pin: 1234,
             email: "sarve@gmail.com"
-
         });
     }
     render() {
