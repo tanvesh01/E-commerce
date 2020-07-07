@@ -2,17 +2,17 @@ import React from 'react';
 import { makeStyles } from "@material-ui/core/styles"
 import { motion } from "framer-motion"
 import Typography from '@material-ui/core/Typography';
-import Grid from "@material-ui/core/Grid"
 import Product from "./Product/Product"
 import { connect } from "react-redux"
 const useStyles = makeStyles((theme) => ({
     cart: {
         width: "90%",
         height: "90%",
-        backgroundColor: "white",
+        backgroundColor: "#ffffff",
         margin: "0 auto",
         zIndex: 500,
         position: "fixed",
+        overflow: "scroll"
     },
     header: {
         position: "relative",
@@ -32,19 +32,22 @@ const useStyles = makeStyles((theme) => ({
     },
     info: {
         width: "100%",
-        height: "5%",
         marginTop: "3rem",
         backgroundColor: "transparent",
-        border: "2px solid purple",
+        // border: "2px solid purple",
         zIndex: 600,
         display: "block",
-        position: "relative"
+        position: "relative",
+        color: "#888888"
     },
     labels: {
         textAlign: "center",
-        height: "3rem"
+        height: "3rem",
+        fontSize: "12.7px",
+        letterSpacing: "0.17em"
     },
     row: {
+        color: "#888888",
         display: "flex",
         flexDirection: "row",
         width: "100%"
@@ -56,7 +59,8 @@ const useStyles = makeStyles((theme) => ({
         flex: 1
     },
     product: {
-        display: "block"
+        display: "block",
+        margin: "2rem"
     }
 }))
 
@@ -77,16 +81,16 @@ function Cart(props) {
             <div className={classes.info} >
                 <div className={classes.row}>
                     <div className={`${classes.col} ${classes.labels}`}  >
-                        <p>Products</p>
+                        <p style={{ fontWeight: "700" }} >PRODUCTS</p>
                     </div>
                     <div className={`${classes.col} ${classes.labels}`}  >
-                        <p>Price</p>
+                        <p>PRICE</p>
                     </div>
                 </div>
             </div>
             <div className={classes.product}>
                 {props.cart.map(function (x) {
-                    return <div className={classes.row} >
+                    return <div className={classes.row} style={{ marginTop: "2rem" }} >
                         <div className={classes.col} >
                             <Product name={x.data.name} image={x.data.imageLink} />
                         </div>

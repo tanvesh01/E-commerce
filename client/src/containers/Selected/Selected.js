@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
-        backgroundColor: "white"
+        backgroundColor: "#f6f6f6"
     },
     imageContent: {
         width: "100%",
