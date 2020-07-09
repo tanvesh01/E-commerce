@@ -16,6 +16,10 @@ const useStyles = makeStyles((theme) => ({
     inImage: {
         display: "block",
         margin: "auto"
+    },
+    info: {
+        color: "black"
+
     }
 }))
 function Product(props) {
@@ -23,7 +27,7 @@ function Product(props) {
     return (
         <div className={classes.row}>
             <div className={`${classes.image} ${classes.col}`}> <img style={{ objectFit: "cover", height: "170px", width: "170px" }} className={classes.inImage} src={props.image} alt="of the Product" /> </div>
-            <div className={classes.col} >{props.name}</div>
+            <div className={`${classes.col} ${classes.info} `} >{props.name}</div>
         </div>
     )
 }
