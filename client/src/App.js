@@ -1,6 +1,7 @@
 import React from 'react';
 import Home from "./components/Home/Home";
 import Products from "./containers/Products/Products";
+import Register from "./containers/Register/Register";
 import { Switch, Route, useLocation } from "react-router-dom"
 import { connect } from "react-redux";
 import { AnimatePresence } from "framer-motion"
@@ -24,6 +25,7 @@ function App(props) {
         <AnimatePresence exitBeforeEnter >
           <Switch location={location} key={location.pathname}>
             <Route path="/products" component={Products} />
+            <Route path="/register" component={Register} />
             <Route path="/select" component={Selected} />
             <Route path="/" component={Home} />
           </Switch>
