@@ -43,4 +43,10 @@ class Register extends Component {
     }
 }
 
-export default connect()(Register);
+const mapStateToProps = state => {
+    return {
+        error: state.error
+    }
+}
+
+export default connect(mapStateToProps, null)(Register);

@@ -1,6 +1,8 @@
 import React from 'react';
 import { makeStyles } from "@material-ui/core/styles"
 import { TextField, Button } from "@material-ui/core"
+import { connect } from "react-redux"
+import * as actions from "../../store/actions/authActions"
 import {
     Formik,
     Field,
@@ -11,12 +13,20 @@ import {
 } from "formik";
 const useStyles = makeStyles((theme) => ({
     root: {
-
+        margin: "3rem"
     }
-
 }))
 
-function RegisterForm() {
+function RegisterForm(props) {
+    const handleSubmit = (name, email, password) => {
+        const newUser = {
+            name: name,
+            password: password,
+            email: email
+        }
+        props.register(newUser);
+    }
+    const classes = useStyles();
     return (
         <div  >
             <Formik
@@ -24,26 +34,30 @@ function RegisterForm() {
                 onSubmit={(data, { setSubmitting }) => {
                     setSubmitting(true)
                     //! make async call here!!!!
-                    console.log(data)
+                    handleSubmit(data.name, data.email, data.password)
                     setSubmitting(false)
                 }}
             >
                 {({ values, isSubmitting }) => (
                     <Form >
-                        <Field
-                            variant="outlined"
-                            name="name"
-                            as={TextField}
-                            type="input" />
                         <div>
                             <Field
+                                label="Name"
+                                variant="outlined"
+                                name="name"
+                                as={TextField}
+                                type="input" />
+                        </div>
+                        <div className={classes.root}>
+                            <Field
+                                label="Email"
                                 variant="outlined"
                                 name="email"
                                 as={TextField}
                                 type="input"
                             />
                         </div>
-                        <div>
+                        <div className={classes.root}>
                             <Field
                                 label="Password"
                                 type="password"
@@ -52,7 +66,7 @@ function RegisterForm() {
                                 as={TextField}
                             />
                         </div>
-                        <div>
+                        <div className={classes.root}>
                             <Button disabled={isSubmitting} type="submit" >Submit</Button>
                         </div>
                     </Form>
@@ -62,4 +76,11 @@ function RegisterForm() {
     )
 }
 
-export default RegisterForm;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        register: (newUser) => dispatch(actions.register(newUser)),
+        logOut: () => dispatch(actions.logOut())
+    }
+}
+
+export default connect(null, mapDispatchToProps)(RegisterForm);
