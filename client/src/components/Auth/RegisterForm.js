@@ -40,7 +40,7 @@ function RegisterForm(props) {
             >
                 {({ values, isSubmitting }) => (
                     <Form >
-                        <div>
+                        <div className={classes.root} >
                             <Field
                                 label="Name"
                                 variant="outlined"

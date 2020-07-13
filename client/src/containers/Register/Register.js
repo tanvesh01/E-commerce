@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { Grid } from "@material-ui/core";
 import RegisterForm from "../../components/Auth/RegisterForm"
+import LoginForm from "../../components/Auth/LoginForm"
+import { Button } from "@material-ui/core"
 import { connect } from "react-redux"
+import * as actions from "../../store/actions/authActions"
 class Register extends Component {
-
     state = {
         msg: ""
     }
@@ -34,7 +36,10 @@ class Register extends Component {
                 }} xs={6} >
                     <div>
                         <h1>Form!</h1>
-                        <RegisterForm />
+                        {this.props.isLogin ? <LoginForm /> : <RegisterForm />}
+                        <Button onClick={() => this.props.changeMode()} >
+                            {this.props.isLogin ? "Are you a new user? " : "Already a user?"}
+                        </Button>
                     </div>
                 </Grid>
                 <Grid item xs={6}></Grid>
@@ -45,8 +50,15 @@ class Register extends Component {
 
 const mapStateToProps = state => {
     return {
-        error: state.error
+        error: state.error.msg,
+        isLogin: state.auth.isLogin
     }
 }
 
-export default connect(mapStateToProps, null)(Register);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        changeMode: () => { dispatch(actions.changeAuthMode()) }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

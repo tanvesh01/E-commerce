@@ -86,3 +86,9 @@ export const tokenConfig = getState => {
     }
     return config;
 }
+
+export const changeAuthMode = () => {
+    return {
+        type: actionTypes.CHANGE_AUTH_MODE
+    }
+}

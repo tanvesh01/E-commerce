@@ -4,7 +4,8 @@ const initState = {
     token: localStorage.getItem('token'),
     isAuth: null,
     isLoading: false,
-    user: null
+    user: null,
+    isLogin: false
 }
 
 export default function (state = initState, action) {
@@ -43,6 +44,11 @@ export default function (state = initState, action) {
                 user: null,
                 isAuth: null,
                 isLoading: false
+            }
+        case actionTypes.CHANGE_AUTH_MODE:
+            return {
+                ...state,
+                isLogin: !state.isLogin
             }
         default:
             return state;
