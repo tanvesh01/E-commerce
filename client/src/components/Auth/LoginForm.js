@@ -3,13 +3,12 @@ import { makeStyles } from "@material-ui/core/styles"
 import { TextField, Button } from "@material-ui/core"
 import { connect } from "react-redux"
 import * as actions from "../../store/actions/authActions"
+import { withRouter } from "react-router-dom";
+import * as yup from "yup";
 import {
     Formik,
-    Field,
     Form,
     useField,
-    FieldAttributes,
-    FieldArray
 } from "formik";
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -17,44 +16,71 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
+const CustomField = ({ label, type, variant, ...props }) => {
+    const [field, meta] = useField(props);
+    const errorText = meta.error && meta.touched ?
+        meta.error : "";
+    return <TextField
+        variant={variant}
+        label={label}
+        {...field}
+        helperText={errorText}
+        error={!!errorText}
+        type={type}
+    />
+}
+
+const validationSchema = yup.object({
+    email: yup.string().email("Enter a valid Email :)").required(),
+    password: yup.string().min(3, "Too short :(").required()
+})
+
 function LoginForm(props) {
     const handleSubmit = (email, password) => {
+        console.log(this.props)
         const user = {
             email: email,
             password: password
         }
         props.login(user);
+        //this.props.history.push("/products");
     }
     const classes = useStyles();
     return (
         <div>
             <Formik
                 initialValues={{ email: "", password: "" }}
-                onSubmit={(data, { setSubmitting }) => {
+                onSubmit={(data, { setSubmitting }, props) => {
                     setSubmitting(true)
                     //! make async call here!!!!
-                    handleSubmit(data.email, data.password)
+
+                    handleSubmit(data.email, data.password, props)
                     setSubmitting(false)
                 }}
+                validationSchema={validationSchema}
+            //*validate={(values) => {
+            //*    const errors = {};
+            //*    if (values.email.indexOf("@") == -1 || values.email.indexOf(".") == -1) {
+            //*        errors.email = "Enter a valid email :)"
+            //*    }
+            //*    return errors;
+            //*}}
             >
-                {({ values, isSubmitting }) => (
+                {({ values, errors, isSubmitting }) => (
                     <Form >
                         <div className={classes.root}>
-                            <Field
+                            <CustomField
                                 label="Email"
                                 variant="outlined"
                                 name="email"
-                                as={TextField}
-                                type="input"
                             />
                         </div>
                         <div className={classes.root}>
-                            <Field
+                            <CustomField
                                 label="Password"
                                 type="password"
                                 variant="outlined"
                                 name="password"
-                                as={TextField}
                             />
                         </div>
                         <div className={classes.root}>

@@ -3,19 +3,24 @@ import { makeStyles } from "@material-ui/core/styles"
 import { TextField, Button } from "@material-ui/core"
 import { connect } from "react-redux"
 import * as actions from "../../store/actions/authActions"
+import * as yup from "yup";
+import CustomField from "./CustomField";
 import {
     Formik,
-    Field,
     Form,
     useField,
-    FieldAttributes,
-    FieldArray
 } from "formik";
 const useStyles = makeStyles((theme) => ({
     root: {
         margin: "3rem"
     }
 }))
+
+const validationSchema = yup.object({
+    name: yup.string().required(),
+    email: yup.string().email("Enter a valid Email :)").required(),
+    password: yup.string().min(3, "Too short :(").required()
+})
 
 function RegisterForm(props) {
     const handleSubmit = (name, email, password) => {
@@ -37,33 +42,30 @@ function RegisterForm(props) {
                     handleSubmit(data.name, data.email, data.password)
                     setSubmitting(false)
                 }}
+                validationSchema={validationSchema}
             >
-                {({ values, isSubmitting }) => (
+                {({ values, errors, isSubmitting }) => (
                     <Form >
                         <div className={classes.root} >
-                            <Field
+                            <CustomField
                                 label="Name"
                                 variant="outlined"
                                 name="name"
-                                as={TextField}
-                                type="input" />
-                        </div>
-                        <div className={classes.root}>
-                            <Field
-                                label="Email"
-                                variant="outlined"
-                                name="email"
-                                as={TextField}
-                                type="input"
                             />
                         </div>
                         <div className={classes.root}>
-                            <Field
+                            <CustomField
+                                label="Email"
+                                variant="outlined"
+                                name="email"
+                            />
+                        </div>
+                        <div className={classes.root}>
+                            <CustomField
                                 label="Password"
                                 type="password"
                                 variant="outlined"
                                 name="password"
-                                as={TextField}
                             />
                         </div>
                         <div className={classes.root}>
