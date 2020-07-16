@@ -1,79 +1,73 @@
-import React from 'react';
-import { makeStyles } from "@material-ui/core/styles"
-import { TextField, Button } from "@material-ui/core"
-import { connect } from "react-redux"
-import * as actions from "../../store/actions/authActions"
-import { withRouter } from "react-router-dom";
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import { TextField, Button } from "@material-ui/core";
+import { connect } from "react-redux";
+import * as actions from "../../store/actions/authActions";
+import { Redirect, withRouter } from "react-router-dom";
 import * as yup from "yup";
-import {
-    Formik,
-    Form,
-    useField,
-} from "formik";
+import { Formik, Form, useField } from "formik";
 const useStyles = makeStyles((theme) => ({
     root: {
-        margin: "3rem"
-    }
-}))
+        margin: "3rem",
+    },
+}));
 
 const CustomField = ({ label, type, variant, ...props }) => {
     const [field, meta] = useField(props);
-    const errorText = meta.error && meta.touched ?
-        meta.error : "";
-    return <TextField
-        variant={variant}
-        label={label}
-        {...field}
-        helperText={errorText}
-        error={!!errorText}
-        type={type}
-    />
-}
+    const errorText = meta.error && meta.touched ? meta.error : "";
+    return (
+        <TextField
+            variant={variant}
+            label={label}
+            {...field}
+            helperText={errorText}
+            error={!!errorText}
+            type={type}
+        />
+    );
+};
 
 const validationSchema = yup.object({
     email: yup.string().email("Enter a valid Email :)").required(),
-    password: yup.string().min(3, "Too short :(").required()
-})
+    password: yup.string().min(3, "Too short :(").required(),
+});
 
 function LoginForm(props) {
+    console.log(props);
     const handleSubmit = (email, password) => {
-        console.log(this.props)
+        console.log(props);
         const user = {
             email: email,
-            password: password
-        }
-        props.login(user);
-        //this.props.history.push("/products");
-    }
+            password: password,
+        };
+        //props.history.push("/products");
+        props.login(user, props.history);
+    };
     const classes = useStyles();
+
     return (
         <div>
             <Formik
                 initialValues={{ email: "", password: "" }}
-                onSubmit={(data, { setSubmitting }, props) => {
-                    setSubmitting(true)
+                onSubmit={(data, { setSubmitting }) => {
+                    setSubmitting(true);
                     //! make async call here!!!!
-
-                    handleSubmit(data.email, data.password, props)
-                    setSubmitting(false)
+                    handleSubmit(data.email, data.password);
+                    setSubmitting(false);
                 }}
                 validationSchema={validationSchema}
-            //*validate={(values) => {
-            //*    const errors = {};
-            //*    if (values.email.indexOf("@") == -1 || values.email.indexOf(".") == -1) {
-            //*        errors.email = "Enter a valid email :)"
-            //*    }
-            //*    return errors;
-            //*}}
+                //*validate={(values) => {
+                //*    const errors = {};
+                //*    if (values.email.indexOf("@") == -1 || values.email.indexOf(".") == -1) {
+                //*        errors.email = "Enter a valid email :)"
+                //*    }
+                //*    return errors;
+                //*}}
             >
                 {({ values, errors, isSubmitting }) => (
-                    <Form >
+                    <Form>
                         <div className={classes.root}>
-                            <CustomField
-                                label="Email"
-                                variant="outlined"
-                                name="email"
-                            />
+                            <CustomField label="Email" variant="outlined" name="email" />
                         </div>
                         <div className={classes.root}>
                             <CustomField
@@ -84,20 +78,22 @@ function LoginForm(props) {
                             />
                         </div>
                         <div className={classes.root}>
-                            <Button disabled={isSubmitting} type="submit" >Submit</Button>
+                            <Button disabled={isSubmitting} type="submit">
+                                Submit
+                            </Button>
                         </div>
                     </Form>
                 )}
             </Formik>
         </div>
-    )
+    );
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         login: (user) => dispatch(actions.login(user)),
-        logOut: () => dispatch(actions.logOut())
-    }
-}
+        logOut: () => dispatch(actions.logOut()),
+    };
+};
 
-export default connect(null, mapDispatchToProps)(LoginForm);
+export default withRouter(connect(null, mapDispatchToProps)(LoginForm));

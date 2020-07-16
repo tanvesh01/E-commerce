@@ -1,16 +1,31 @@
-import React from 'react';
+import React from "react";
 import {
-    AppBar, CssBaseline, Drawer, Hidden, IconButton, InboxIcon, List,
-    ListItem, ListItemIcon, ListItemText, MenuIcon, Toolbar, Typography,
-    useTheme, BrandList, PriceSlider, Cart, Landing,
-    ItemGrid, useStyles
+    AppBar,
+    CssBaseline,
+    Drawer,
+    Hidden,
+    IconButton,
+    InboxIcon,
+    List,
+    ListItem,
+    ListItemIcon,
+    ListItemText,
+    MenuIcon,
+    Toolbar,
+    Typography,
+    useTheme,
+    BrandList,
+    PriceSlider,
+    Cart,
+    Landing,
+    ItemGrid,
+    useStyles,
 } from "./imports";
 import { connect } from "react-redux";
 import { motion } from "framer-motion";
 import * as actions from "../../store/actions/products";
-
-
-
+import { Link } from "react-router-dom";
+import { Button } from "@material-ui/core";
 function ResponsiveDrawer(props) {
     const { window } = props;
     const classes = useStyles();
@@ -22,9 +37,10 @@ function ResponsiveDrawer(props) {
     };
     const catergoryVariants = {
         hover: {
-            scale: 0.98, originX: 0
+            scale: 0.98,
+            originX: 0,
         },
-    }
+    };
     const drawer = (
         <div className={classes.filter}>
             <div className={classes.toolbar} />
@@ -33,20 +49,30 @@ function ResponsiveDrawer(props) {
                     <ListItem button onClick={() => props.getItem("shoe")} key={"shoes"}>
                         <motion.div
                             style={{ width: "100%", display: "flex" }}
-                            whileHover={{ scale: 1.3, originX: 0, originY: 0 }}>
-                            <ListItemIcon> <InboxIcon /> </ListItemIcon>
+                            whileHover={{ scale: 1.3, originX: 0, originY: 0 }}
+                        >
+                            <ListItemIcon>
+                                {" "}
+                                <InboxIcon />{" "}
+                            </ListItemIcon>
                             <ListItemText primary={"shoes"} />
                         </motion.div>
                     </ListItem>
                 </motion.div>
                 <ListItem button onClick={() => props.getItem("Phone")} key={"phones"}>
-                    <ListItemIcon> <InboxIcon /> </ListItemIcon>
+                    <ListItemIcon>
+                        {" "}
+                        <InboxIcon />{" "}
+                    </ListItemIcon>
                     <ListItemText primary={"phones"} />
                 </ListItem>
                 {/* ::::::::: FILTERS STARTS HERE ::::::::: */}
                 <BrandList items={props.items} />
                 <PriceSlider />
                 <Cart data={props.cart} />
+                <Button component={Link} to="/register">
+                    Register
+                </Button>
             </List>
         </div>
     );
@@ -54,22 +80,22 @@ function ResponsiveDrawer(props) {
     const container = window !== undefined ? () => window().document.body : undefined;
     const rootVariant = {
         hidden: {
-            opacity: 0
+            opacity: 0,
         },
         animate: {
             opacity: 1,
             transition: {
                 delay: 1,
-                duration: 1.5
-            }
+                duration: 1.5,
+            },
         },
         exit: {
             opacity: 0,
             transition: {
-                duration: 1
-            }
-        }
-    }
+                duration: 1,
+            },
+        },
+    };
 
     return (
         <motion.div
@@ -77,7 +103,8 @@ function ResponsiveDrawer(props) {
             initial="hidden"
             animate="animate"
             exit="exit"
-            className={classes.root}>
+            className={classes.root}
+        >
             <CssBaseline />
             <AppBar className={classes.appBar}>
                 <Toolbar>
@@ -92,7 +119,7 @@ function ResponsiveDrawer(props) {
                     </IconButton>
                     <Typography variant="h6" noWrap>
                         Shopify
-          </Typography>
+                    </Typography>
                 </Toolbar>
             </AppBar>
             <div className={classes.appBarSpacer} />
@@ -104,12 +131,12 @@ function ResponsiveDrawer(props) {
                         <Drawer
                             container={container}
                             variant="temporary"
-                            anchor={theme.direction === 'rtl' ? 'right' : 'left'}
+                            anchor={theme.direction === "rtl" ? "right" : "left"}
                             open={mobileOpen}
                             onClose={handleDrawerToggle}
                             classes={{
                                 paper: classes.drawerPaper,
-                                modal: classes.modal
+                                modal: classes.modal,
                             }}
                             ModalProps={{
                                 keepMounted: true, // Better open performance on mobile.
@@ -136,27 +163,28 @@ function ResponsiveDrawer(props) {
                         items={props.items}
                         brand={props.brand}
                         minPrice={props.minPrice}
-                        maxPrice={props.maxPrice} />
+                        maxPrice={props.maxPrice}
+                    />
                 </main>
             </div>
         </motion.div>
     );
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
         cart: state.orders.cart,
         items: state.category.items,
         loading: state.category.loading,
         brand: state.category.brand,
         minPrice: state.category.minPrice,
-        maxPrice: state.category.maxPrice
-    }
-}
+        maxPrice: state.category.maxPrice,
+    };
+};
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
     return {
-        getItem: (item) => dispatch(actions.getItem(item))
-    }
-}
+        getItem: (item) => dispatch(actions.getItem(item)),
+    };
+};
 export default connect(mapStateToProps, mapDispatchToProps)(ResponsiveDrawer);
