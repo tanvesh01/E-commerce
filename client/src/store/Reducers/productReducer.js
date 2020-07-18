@@ -5,41 +5,41 @@ const initState = {
     brand: null,
     maxPrice: 2000,
     minPrice: 0,
-    selected: null
-}
+    selected: null,
+};
 
 const reducer = (state = initState, actions) => {
     switch (actions.type) {
         case actionTypes.LOAD:
             return {
                 ...state,
-                loading: true
-            }
+                loading: true,
+            };
         case actionTypes.GET_ITEM:
             return {
                 ...state,
                 items: actions.data,
                 loading: false,
-            }
+            };
         case actionTypes.SET_BRAND:
             return {
                 ...state,
-                brand: actions.brand
-            }
+                brand: actions.brand,
+            };
         case actionTypes.SET_PRICE:
             return {
                 ...state,
                 minPrice: actions.min,
-                maxPrice: actions.max
-            }
+                maxPrice: actions.max,
+            };
         case actionTypes.SET_SELECTED:
             return {
                 ...state,
-                selected: actions.id
-            }
+                selected: actions.id,
+            };
         default:
             return state;
     }
-}
+};
 
-export default reducer
+export default reducer;

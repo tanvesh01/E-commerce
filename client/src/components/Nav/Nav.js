@@ -85,14 +85,13 @@ function ResponsiveDrawer(props) {
         animate: {
             opacity: 1,
             transition: {
-                delay: 1,
-                duration: 1.5,
+                duration: 0.5,
             },
         },
         exit: {
             opacity: 0,
             transition: {
-                duration: 1,
+                duration: 0.5,
             },
         },
     };
@@ -106,7 +105,7 @@ function ResponsiveDrawer(props) {
             className={classes.root}
         >
             <CssBaseline />
-            <AppBar className={classes.appBar}>
+            <AppBar elevation={0} className={classes.appBar}>
                 <Toolbar>
                     <IconButton
                         color="inherit"
@@ -123,7 +122,6 @@ function ResponsiveDrawer(props) {
                 </Toolbar>
             </AppBar>
             <div className={classes.appBarSpacer} />
-            <Landing />
             <div className={classes.app}>
                 <nav className={classes.drawer} aria-label="mailbox folders">
                     {/* The implementation can be swapped with js to avoid SEO duplication of links. */}

@@ -1,24 +1,18 @@
-import { createMuiTheme } from '@material-ui/core/styles'
+import { createMuiTheme } from "@material-ui/core/styles";
 const theme = createMuiTheme({
     overrides: {
         MuiCssBaseline: {
-            '@global': {
+            "@global": {
                 html: {
                     backgroundColor: "white",
                 },
                 body: {
                     backgroundColor: "white",
-                }
+                },
             },
         },
     },
-    // props: {
-    //     // Name of the component
-    //     MuiButtonBase: {
-    //         // The properties to apply
-    //         disableRipple: true // No more ripple, on the whole application!
-    //     }
-    // },
+
     typography: {
         fontFamily: " 'Jost', sans-serif",
         // h5: {
@@ -27,8 +21,11 @@ const theme = createMuiTheme({
         // },
         h1: {
             fontFamily: "'Montserrat', sans-serif",
-            fontSize: "3rem"
-        }
+            fontSize: "3rem",
+        },
+        h3: {
+            fontFamily: "'Bebas Neue', cursive",
+        },
     },
-})
-export default theme
+});
+export default theme;

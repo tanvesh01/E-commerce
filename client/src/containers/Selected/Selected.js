@@ -1,33 +1,38 @@
-import React from 'react';
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 import { connect } from "react-redux";
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
-        backgroundColor: "#f6f6f6"
+        backgroundColor: "#f6f6f6",
+        // "& div": {
+        //     border: "1px purple solid",
+        // },
     },
     imageContent: {
         width: "100%",
         height: "100vh",
-        zIndex: 1000
+        zIndex: 1000,
+    },
+    parent: {
+        marginTop: "8rem",
+        marginLeft: "1rem",
     },
     name: {
-        textAlign: "center",
-        marginTop: "13rem"
+        margin: "1rem",
     },
     price: {
         margin: "1rem",
-        textAlign: "center",
-    }
-}))
+    },
+}));
 
 const transition = {
     duration: 1,
-    ease: [0.43, 0.13, 0.23, 0.96]
+    ease: [0.43, 0.13, 0.23, 0.96],
 };
 
 const imageVariants = {
@@ -35,49 +40,36 @@ const imageVariants = {
     enter: {
         x: "0%",
         opacity: 1,
-        transition
-    }
+        transition,
+    },
 };
 
 const parentVariant = {
     hidden: {
-        opacity: 0,
-        y: '50%',
-        transition: {
-            delay: 0,
-            staggerChildren: 0.5,
-            duration: 1
-        }
+        opacity: 1,
     },
     visible: {
         opacity: 1,
-        y: "0%",
         transition: {
-            // type: 'spring',
-            // mass: 0.4,
-            // damping: 8,
-            delay: 1,
-            duration: 1,
             staggerChildren: 0.4,
-            // when: "beforeChildren",
-        }
+        },
     },
-}
+};
 
 const childVariant = {
-    hidden: { opacity: 0, y: "50%" },
+    hidden: { opacity: 0, y: "-30%" },
     visible: {
         y: "0%",
         opacity: 1,
         transition: {
-            duration: 1
-        }
+            duration: 0.6,
+        },
     },
-}
+};
 
 function Selected(props) {
     console.log(props.items);
-    let prod
+    let prod;
     for (let i = 0; i < props.items.length; i++) {
         if (props.items[i]._id === props.selectedId) {
             prod = props.items[i];
@@ -87,37 +79,58 @@ function Selected(props) {
     const classes = useStyles();
     return (
         <div className={classes.root}>
-            <Grid container  >
+            <Grid container>
                 <Grid item xs={6}>
-                    <motion.div initial="exit" animate="enter" exit="exit" className={classes.imageContent}  >
-                        <motion.img variants={imageVariants} style={{ objectFit: "cover" }} width="100%" height="100%" src={prod.imageLink} />
+                    <motion.div
+                        initial="exit"
+                        animate="enter"
+                        exit="exit"
+                        className={classes.imageContent}
+                    >
+                        <motion.img
+                            variants={imageVariants}
+                            style={{ objectFit: "cover" }}
+                            width="100%"
+                            height="100%"
+                            src={prod.imageLink}
+                        />
                     </motion.div>
                 </Grid>
                 <Grid item xs={6}>
-                    <motion.div initial="hidden" animate="visible" exit="hidden" >
-                        <motion.div className={classes.name} variants={parentVariant} >
-                            <Typography variant="h3"  >
+                    <motion.div
+                        initial="hidden"
+                        animate="visible"
+                        exit="hidden"
+                        variants={parentVariant}
+                        className={classes.parent}
+                    >
+                        <motion.div className={classes.name} variants={childVariant}>
+                            <Typography style={{ fontSize: "2rem" }} variant="h3">
+                                {prod.brand}
+                            </Typography>
+                        </motion.div>
+                        <motion.div className={classes.name} variants={childVariant}>
+                            <Typography variant="h3" style={{ fontSize: "5rem" }}>
                                 {prod.name}
                             </Typography>
-                            <motion.div className={classes.price} variants={childVariant} >
-                                <Typography variant="h3"  >
-                                    $ {prod.price}
-                                </Typography>
-                            </motion.div>
                         </motion.div>
-
+                        <motion.div className={classes.price} variants={childVariant}>
+                            <Typography style={{ fontSize: "3rem" }} variant="h3">
+                                $ {prod.price}
+                            </Typography>
+                        </motion.div>
                     </motion.div>
                 </Grid>
             </Grid>
         </div>
-    )
+    );
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
         selectedId: state.category.selected,
-        items: state.category.items
-    }
-}
+        items: state.category.items,
+    };
+};
 
-export default connect(mapStateToProps, null)(Selected)
+export default connect(mapStateToProps, null)(Selected);
