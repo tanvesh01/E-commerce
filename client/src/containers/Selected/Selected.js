@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { motion } from "framer-motion";
 import { connect } from "react-redux";
+import Selector from "../../components/Size_selctor/Selector";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 
@@ -54,6 +55,12 @@ const parentVariant = {
             staggerChildren: 0.4,
         },
     },
+    exit: {
+        opacity: 0,
+        transition: {
+            duaration: 1,
+        },
+    },
 };
 
 const childVariant = {
@@ -100,7 +107,7 @@ function Selected(props) {
                     <motion.div
                         initial="hidden"
                         animate="visible"
-                        exit="hidden"
+                        exit="exit"
                         variants={parentVariant}
                         className={classes.parent}
                     >
@@ -116,8 +123,17 @@ function Selected(props) {
                         </motion.div>
                         <motion.div className={classes.price} variants={childVariant}>
                             <Typography style={{ fontSize: "3rem" }} variant="h3">
-                                $ {prod.price}
+                                ${prod.price}
                             </Typography>
+                        </motion.div>
+                        <motion.div className={classes.price} variants={childVariant}>
+                            <Typography
+                                style={{ fontSize: "1.3rem", marginBottom: "0.5rem" }}
+                                variant="h3"
+                            >
+                                SIZE
+                            </Typography>
+                            <Selector />
                         </motion.div>
                     </motion.div>
                 </Grid>
