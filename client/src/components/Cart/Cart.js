@@ -8,7 +8,7 @@ class Cart extends Component {
     submit = () => {
         let ids = [];
         for (let i = 0; i < this.props.cart.length; i++) {
-            ids.push(this.props.cart[i].data._id);
+            ids.push(this.props.cart[i]._id);
         }
         this.props.submitOrder({
             products: ids,
@@ -25,12 +25,12 @@ class Cart extends Component {
         return (
             <div>
                 <ul>
-                    {this.props.data.map(function (x) {
+                    {this.props.cart.map(function (x) {
                         return (
-                            <li key={x.data._id}>
+                            <li key={x._id}>
                                 {" "}
-                                {x.data.name}
-                                <button onClick={() => this.props.deleteFromCart(x.data._id)}>
+                                {x.name}
+                                <button onClick={() => this.props.deleteFromCart(x._id)}>
                                     delete
                                 </button>
                             </li>

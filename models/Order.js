@@ -9,7 +9,7 @@ const OrderSchema = new Schema({
         },
     ],
     name: String,
-    sizes: [Number],
+    sizes: [String],
     phone: String,
     address: String,
     pin: Number,

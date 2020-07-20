@@ -17,7 +17,6 @@ import {
     BrandList,
     PriceSlider,
     Cart,
-    Landing,
     ItemGrid,
     useStyles,
 } from "./imports";

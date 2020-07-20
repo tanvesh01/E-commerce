@@ -5,7 +5,8 @@ import { connect } from "react-redux";
 import Selector from "../../components/Size_selctor/Selector";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-
+import { Button } from "@material-ui/core";
+import * as actions from "../../store/actions/orderActions";
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -133,7 +134,12 @@ function Selected(props) {
                             >
                                 SIZE
                             </Typography>
-                            <Selector />
+                            <Selector product={prod} />
+                        </motion.div>
+                        <motion.div className={classes.price} variants={childVariant}>
+                            <Button onClick={() => props.addToCart(prod, props.selectedSize)}>
+                                Add to cart
+                            </Button>
                         </motion.div>
                     </motion.div>
                 </Grid>
@@ -141,12 +147,16 @@ function Selected(props) {
         </div>
     );
 }
-
 const mapStateToProps = (state) => {
     return {
+        selectedSize: state.orders.selectedSize,
         selectedId: state.category.selected,
         items: state.category.items,
     };
 };
-
-export default connect(mapStateToProps, null)(Selected);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addToCart: (data, size) => dispatch(actions.addToCart(data, size)),
+    };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Selected);
