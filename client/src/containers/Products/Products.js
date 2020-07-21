@@ -13,10 +13,26 @@ class Products extends Component {
     // }
     render() {
         return (
-            <React.Fragment>
-                <Modal show={this.props.show} modalHandler={this.modalHandler} />
-                <Nav />
-            </React.Fragment>
+            <div
+                style={{
+                    height: "100%",
+                    width: "100%",
+                    display: "block",
+                }}
+            >
+                <div
+                    style={{
+                        height: "100%",
+                        width: "100%",
+                        display: "block",
+                    }}
+                >
+                    <Nav />
+                </div>
+                
+                    <Modal show={this.props.show} modalHandler={this.modalHandler} />
+               
+            </div>
         );
     }
 }

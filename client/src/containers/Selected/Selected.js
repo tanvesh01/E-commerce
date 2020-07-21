@@ -11,9 +11,6 @@ const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
         backgroundColor: "#f6f6f6",
-        // "& div": {
-        //     border: "1px purple solid",
-        // },
     },
     imageContent: {
         width: "100%",
@@ -45,7 +42,6 @@ const imageVariants = {
         transition,
     },
 };
-
 const parentVariant = {
     hidden: {
         opacity: 1,
@@ -137,9 +133,29 @@ function Selected(props) {
                             <Selector product={prod} />
                         </motion.div>
                         <motion.div className={classes.price} variants={childVariant}>
-                            <Button onClick={() => props.addToCart(prod, props.selectedSize)}>
+                            <motion.button
+                                style={{
+                                    border: "none",
+                                    borderRadius: "0.1rem",
+                                    padding: "15px 32px",
+                                    backgroundColor: "black",
+                                    color: "white",
+                                    fontFamily: '"Bebas Neue", cursive',
+                                    textAlign: "center",
+                                    textDecoration: "none",
+                                }}
+                                whileHover={{
+                                    borderRadius: "2rem",
+                                    scale: 1.2,
+                                    transition: {
+                                        type: "spring",
+                                        duration: 0.7,
+                                    },
+                                }}
+                                onClick={() => props.addToCart(prod, props.selectedSize)}
+                            >
                                 Add to cart
-                            </Button>
+                            </motion.button>
                         </motion.div>
                     </motion.div>
                 </Grid>

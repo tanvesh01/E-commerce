@@ -9,12 +9,11 @@ import IconButton from "@material-ui/core/IconButton";
 import * as actions from "../../store/actions/orderActions";
 const useStyles = makeStyles((theme) => ({
     cart: {
-        width: "90%",
+        width: "50%",
         height: "90%",
         backgroundColor: "#ffffff",
         margin: "0 auto",
         zIndex: 500,
-        position: "fixed",
         overflow: "scroll",
     },
     header: {
@@ -81,19 +80,7 @@ function Cart(props) {
                         My Cart
                     </Typography>
                 </div>
-                <div className={classes.svg}>
-                    <svg
-                        style={{ display: "block" }}
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 1440 320"
-                    >
-                        <path
-                            fill="#ffe8df"
-                            fill-opacity="1"
-                            d="M0,320L40,277.3C80,235,160,149,240,144C320,139,400,213,480,229.3C560,245,640,203,720,208C800,213,880,267,960,293.3C1040,320,1120,320,1200,304C1280,288,1360,256,1400,240L1440,224L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"
-                        ></path>
-                    </svg>
-                </div>
+                <div className={classes.svg}></div>
             </div>
             <div className={classes.info}>
                 <div className={classes.row}>

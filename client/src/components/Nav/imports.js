@@ -1,17 +1,17 @@
-import AppBar from '@material-ui/core/AppBar';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Drawer from '@material-ui/core/Drawer';
-import Hidden from '@material-ui/core/Hidden';
-import IconButton from '@material-ui/core/IconButton';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import MenuIcon from '@material-ui/icons/Menu';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import AppBar from "@material-ui/core/AppBar";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Drawer from "@material-ui/core/Drawer";
+import Hidden from "@material-ui/core/Hidden";
+import IconButton from "@material-ui/core/IconButton";
+import InboxIcon from "@material-ui/icons/MoveToInbox";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import MenuIcon from "@material-ui/icons/Menu";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 
 import BrandList from "./Categories/BrandList";
 import PriceSlider from "./Categories/PriceSlider";
@@ -21,16 +21,17 @@ import ItemGrid from "../Item/ItemGrid/ItemGrid";
 const drawerWidth = 300;
 const useStyles = makeStyles((theme) => ({
     root: {
-        display: 'flex',
-        flexDirection: 'column',
-        flexWrap: "wrap"
+        display: "flex",
+        flexDirection: "column",
+        flexWrap: "wrap",
+        position: "absolute",
     },
     modal: {
-        marginLeft: "10rem"
+        marginLeft: "10rem",
     },
     drawer: {
         marginTop: "10rem",
-        [theme.breakpoints.up('sm')]: {
+        [theme.breakpoints.up("sm")]: {
             width: drawerWidth,
             flexShrink: 0,
         },
@@ -43,8 +44,8 @@ const useStyles = makeStyles((theme) => ({
     },
     menuButton: {
         marginRight: theme.spacing(2),
-        [theme.breakpoints.up('sm')]: {
-            display: 'none',
+        [theme.breakpoints.up("sm")]: {
+            display: "none",
         },
     },
     // necessary for content to be below app bar
@@ -56,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: "20px",
         width: drawerWidth,
         backgroundColor: "white",
-        position: "static"
+        position: "static",
     },
     content: {
         marginTop: "10rem",
@@ -65,15 +66,15 @@ const useStyles = makeStyles((theme) => ({
     },
     filter: {
         borderRadius: "1.5rem",
-        overflow: 'auto',
+        overflow: "auto",
         backgroundColor: "white",
-        boxShadow: "0px 38px 44px 0px rgba(240,240,240,0.68)"
+        boxShadow: "0px 38px 44px 0px rgba(240,240,240,0.68)",
     },
     app: {
         display: "flex",
-        flexDirection: "row"
+        flexDirection: "row",
     },
-    appBarSpacer: theme.mixins.toolbar
+    appBarSpacer: theme.mixins.toolbar,
 }));
 
 export {
@@ -97,5 +98,5 @@ export {
     Cart,
     Landing,
     ItemGrid,
-    useStyles
-}
+    useStyles,
+};
