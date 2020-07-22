@@ -12,13 +12,16 @@ const useStyles = makeStyles((theme) => ({
         right: 0,
         width: "100%",
         height: "100%",
-        backdropFilter: "saturate(138%) blur(3px)",
-        backgroundColor: "rgba(241, 242, 249, 0.25)",
+        //backdropFilter: "saturate(533%) blur(1px)",
+        backgroundColor: "#0000006b",
     },
     cartModel: {
         display: "flex",
         justifyContent: "center",
         alignItems: "flex-end",
+        marginLeft: "20%",
+        marginRight: "20%",
+        width: "60%",
         height: "100%",
         position: "relative",
     },
@@ -28,7 +31,6 @@ const backdrop = {
     visible: {
         opacity: 1,
         transition: {
-            delay: 2,
             duration: 1,
         },
     },
@@ -38,25 +40,36 @@ const backdrop = {
     exit: {
         opacity: 0,
         transition: {
-            duration: 1,
+            duration: 0.5,
         },
     },
 };
 
-// const cartVariant = {
-//     hidden: {
-//         opacity: 0,
-//         y: "50%",
-//     },
-//     visible: {
-//         opacity: 1,
-//         y: "0%",
-//         transition: {
-//             duration: 1,
-//             tpe: "spring",
-//         },
-//     },
-// };
+const cartVariant = {
+    hidden: {
+        opacity: 0,
+        y: "30%",
+        transition: {
+            duration: 0.5,
+        },
+    },
+    visible: {
+        opacity: 1,
+        zIndex: 500,
+        y: "0%",
+        transition: {
+            duration: 0.5,
+        },
+    },
+    exit: {
+        opacity: 1,
+        y: "100%",
+        transition: {
+            duration: 0.5,
+            type: "spring",
+        },
+    },
+};
 
 function Modal(props) {
     const classes = useStyles();
@@ -83,10 +96,10 @@ function Modal(props) {
                         className={classes.backdrop}
                     />
                     <motion.div
-                        // variants={cartVariant}
-                        // initial="hidden"
-                        // animate="visible"
-                        // exit="exit"
+                        variants={cartVariant}
+                        initial="hidden"
+                        animate="visible"
+                        exit="exit"
                         className={classes.cartModel}
                     >
                         <Cart />

@@ -1,5 +1,4 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import { motion } from "framer-motion";
 import Typography from "@material-ui/core/Typography";
 import Product from "./Product/Product";
@@ -7,68 +6,7 @@ import { connect } from "react-redux";
 import ClearIcon from "@material-ui/icons/Clear";
 import IconButton from "@material-ui/core/IconButton";
 import * as actions from "../../store/actions/orderActions";
-const useStyles = makeStyles((theme) => ({
-    cart: {
-        width: "50%",
-        height: "90%",
-        backgroundColor: "#ffffff",
-        margin: "0 auto",
-        zIndex: 500,
-        overflow: "scroll",
-    },
-    header: {
-        position: "relative",
-        height: "20%",
-    },
-    heading: {
-        position: "absolute",
-        zIndex: 10,
-        marginLeft: "5rem",
-        marginTop: "3rem",
-    },
-    svg: {
-        position: "absolute",
-        width: "100%",
-        height: "50%",
-        zIndex: 1,
-    },
-    info: {
-        width: "100%",
-        marginTop: "3rem",
-        backgroundColor: "transparent",
-        // border: "2px solid purple",
-        zIndex: 600,
-        display: "block",
-        position: "relative",
-        color: "#888888",
-    },
-    labels: {
-        textAlign: "center",
-        height: "3rem",
-        fontSize: "12.7px",
-        letterSpacing: "0.17em",
-    },
-    row: {
-        color: "#888888",
-        display: "flex",
-        flexDirection: "row",
-        width: "100%",
-    },
-    col: {
-        display: "flex",
-        flexDirection: "column",
-        flexBasis: "100%",
-        flex: 1,
-    },
-    product: {
-        display: "block",
-        margin: "2rem",
-    },
-    price: {
-        marginLeft: "4rem",
-        lineHeight: "8.43",
-    },
-}));
+import { useStyles } from "./imports";
 
 function Cart(props) {
     const classes = useStyles();
@@ -76,8 +14,8 @@ function Cart(props) {
         <motion.div className={classes.cart}>
             <div className={classes.header}>
                 <div className={classes.heading}>
-                    <Typography variant="h1" gutterBottom>
-                        My Cart
+                    <Typography variant="h3" style={{ fontSize: "4rem" }}>
+                        Your Cart
                     </Typography>
                 </div>
                 <div className={classes.svg}></div>
