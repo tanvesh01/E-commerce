@@ -20,9 +20,11 @@ import {
     ItemGrid,
     useStyles,
 } from "./imports";
+import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import { connect } from "react-redux";
 import { motion } from "framer-motion";
 import * as actions from "../../store/actions/products";
+import { toggleCart } from "../../store/actions/orderActions";
 import { Link } from "react-router-dom";
 import { Button } from "@material-ui/core";
 function ResponsiveDrawer(props) {
@@ -34,30 +36,17 @@ function ResponsiveDrawer(props) {
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
-    const catergoryVariants = {
-        hover: {
-            scale: 0.98,
-            originX: 0,
-        },
-    };
     const drawer = (
         <div className={classes.filter}>
             <div className={classes.toolbar} />
             <List>
-                <motion.div variants={catergoryVariants} whileHover="hover">
-                    <ListItem button onClick={() => props.getItem("shoe")} key={"shoes"}>
-                        <motion.div
-                            style={{ width: "100%", display: "flex" }}
-                            whileHover={{ scale: 1.3, originX: 0, originY: 0 }}
-                        >
-                            <ListItemIcon>
-                                {" "}
-                                <InboxIcon />{" "}
-                            </ListItemIcon>
-                            <ListItemText primary={"shoes"} />
-                        </motion.div>
-                    </ListItem>
-                </motion.div>
+                <ListItem button onClick={() => props.getItem("shoe")} key={"shoes"}>
+                    <ListItemIcon>
+                        {" "}
+                        <InboxIcon />{" "}
+                    </ListItemIcon>
+                    <ListItemText primary={"shoes"} />
+                </ListItem>
                 <ListItem button onClick={() => props.getItem("Phone")} key={"phones"}>
                     <ListItemIcon>
                         {" "}
@@ -105,7 +94,7 @@ function ResponsiveDrawer(props) {
         >
             <CssBaseline />
             <AppBar elevation={0} className={classes.appBar}>
-                <Toolbar>
+                <Toolbar style={{ justifyContent: "space-between" }}>
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"
@@ -115,9 +104,16 @@ function ResponsiveDrawer(props) {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" noWrap>
-                        Shopify
-                    </Typography>
+                    <div>
+                        <Typography variant="h6" noWrap>
+                            Shopify
+                        </Typography>
+                    </div>
+                    <div>
+                        <IconButton onClick={() => props.toggleCart()}>
+                            <ShoppingCartOutlinedIcon />
+                        </IconButton>
+                    </div>
                 </Toolbar>
             </AppBar>
             <div className={classes.appBarSpacer} />
@@ -181,6 +177,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        toggleCart: () => dispatch(toggleCart()),
         getItem: (item) => dispatch(actions.getItem(item)),
     };
 };

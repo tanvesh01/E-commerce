@@ -31,7 +31,7 @@ const backdrop = {
     visible: {
         opacity: 1,
         transition: {
-            duration: 1,
+            duration: 0.5,
         },
     },
     hidden: {

@@ -38,7 +38,6 @@ class Cart extends Component {
                     }, this)}
                 </ul>
                 <button onClick={() => this.submit()}>Submit</button>
-                <button onClick={() => this.props.toggleCart()}> Open Cart</button>
             </div>
         );
     }
@@ -54,7 +53,6 @@ const mapDispatchToProps = (dispatch) => {
     return {
         deleteFromCart: (id) => dispatch(actions.deleteFromCart(id)),
         submitOrder: (item) => dispatch(actions.submitOrder(item)),
-        toggleCart: () => dispatch(actions.toggleCart()),
     };
 };
 
