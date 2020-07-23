@@ -21,10 +21,11 @@ import {
     useStyles,
 } from "./imports";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
+import FaceIcon from "@material-ui/icons/Face";
 import { connect } from "react-redux";
 import { motion } from "framer-motion";
 import * as actions from "../../store/actions/products";
-import { toggleCart } from "../../store/actions/orderActions";
+import { toggleCart, toggleAuthModal } from "../../store/actions/orderActions";
 import { Link } from "react-router-dom";
 import { Button } from "@material-ui/core";
 function ResponsiveDrawer(props) {
@@ -110,8 +111,14 @@ function ResponsiveDrawer(props) {
                         </Typography>
                     </div>
                     <div>
-                        <IconButton onClick={() => props.toggleCart()}>
+                        <IconButton
+                            style={{ marginRight: "0.5rem" }}
+                            onClick={() => props.toggleCart()}
+                        >
                             <ShoppingCartOutlinedIcon />
+                        </IconButton>
+                        <IconButton onClick={() => props.toggleAuthModal()}>
+                            <FaceIcon />
                         </IconButton>
                     </div>
                 </Toolbar>
@@ -178,6 +185,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         toggleCart: () => dispatch(toggleCart()),
+        toggleAuthModal: () => dispatch(toggleAuthModal()),
         getItem: (item) => dispatch(actions.getItem(item)),
     };
 };

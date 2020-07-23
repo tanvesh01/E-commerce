@@ -7,9 +7,8 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: "#ffffff",
         zIndex: 500,
         overflow: "scroll",
-        borderRight: "10px black solid",
-        borderLeft: "10px black solid",
-        borderTop: "10px black solid",
+        borderTopLeftRadius: "1rem",
+        borderTopRightRadius: "1rem",
     },
     header: {
         position: "relative",

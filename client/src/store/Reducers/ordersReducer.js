@@ -5,6 +5,7 @@ const initState = {
     sizes: [],
     selectedSize: null,
     showCart: false,
+    showAuthModal: false,
 };
 
 const reducer = (state = initState, action) => {
@@ -30,6 +31,11 @@ const reducer = (state = initState, action) => {
             return {
                 ...state,
                 selectedSize: action.size,
+            };
+        case actionTypes.TOGGLE_AUTH_MODAL:
+            return {
+                ...state,
+                showAuthModal: !state.showAuthModal,
             };
         default:
             return state;

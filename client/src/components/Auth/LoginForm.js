@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { TextField, Button } from "@material-ui/core";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/authActions";
-import { Redirect, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import * as yup from "yup";
 import { Formik, Form, useField } from "formik";
 const useStyles = makeStyles((theme) => ({

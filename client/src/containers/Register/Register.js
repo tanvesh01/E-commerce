@@ -4,8 +4,7 @@ import RegisterForm from "../../components/Auth/RegisterForm";
 import LoginForm from "../../components/Auth/LoginForm";
 import { Button } from "@material-ui/core";
 import { connect } from "react-redux";
-import { Redirect, withRouter, Link } from "react-router-dom";
-import { useHistory } from "react-router";
+import { withRouter, Link } from "react-router-dom";
 import * as actions from "../../store/actions/authActions";
 import Alert from "../../components/Alerts/Alert";
 
@@ -31,48 +30,33 @@ class Register extends Component {
             }
         }
     }
-    componentDidMount() {
-        //const history = useHistory();
-        if (this.props.isAuth) {
-            this.props.history.push("/products");
-            this.props.history.go();
-            // authRedirect = <Redirect to="/products" />;
-        }
-    }
     render() {
-        console.log(this.props);
-        let authRedirect = null;
         return (
             <React.Fragment>
-                <Grid container spacing={0} style={{ backgroundColor: "grey", height: "100%" }}>
-                    <Grid
-                        item
-                        style={{
-                            backgroundColor: "white",
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center`",
-                        }}
-                        xs={6}
-                    >
-                        <div>
-                            <h1>Form!</h1>
-                            {this.state.msg != null ? <Alert msg={this.state.msg} /> : null}
-                            {this.props.isLogin && !this.props.isAuth ? (
-                                <LoginForm isAuth={this.props.isAuth} />
-                            ) : (
-                                <RegisterForm isAuth={this.props.isAuth} />
-                            )}
-                            <Button onClick={() => this.props.changeMode()}>
-                                {this.props.isLogin ? "Are you a new user? " : "Already a user?"}
-                            </Button>
-                            <Button component={Link} to="/products">
-                                go back
-                            </Button>
-                        </div>
-                    </Grid>
-                    <Grid item xs={6}></Grid>
-                </Grid>
+                <div
+                    style={{
+                        backgroundColor: "white",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center`",
+                    }}
+                >
+                    <div>
+                        <h1>Form!</h1>
+                        {this.state.msg != null ? <Alert msg={this.state.msg} /> : null}
+                        {this.props.isLogin && !this.props.isAuth ? (
+                            <LoginForm isAuth={this.props.isAuth} />
+                        ) : (
+                            <RegisterForm isAuth={this.props.isAuth} />
+                        )}
+                        <Button onClick={() => this.props.changeMode()}>
+                            {this.props.isLogin ? "Are you a new user? " : "Already a user?"}
+                        </Button>
+                        <Button component={Link} to="/products">
+                            go back
+                        </Button>
+                    </div>
+                </div>
             </React.Fragment>
         );
     }

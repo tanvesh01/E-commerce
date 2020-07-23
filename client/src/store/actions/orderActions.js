@@ -1,9 +1,6 @@
 import * as actionTypes from "./orderActionTypes";
 import axios from "axios";
 export const addToCart = (data, size) => {
-    console.log("====================================");
-    console.log(size);
-    console.log("====================================");
     return {
         type: actionTypes.ADD_TO_CART,
         data: data,
@@ -50,5 +47,11 @@ export const deleteFromCart = (id) => {
 export const toggleCart = () => {
     return {
         type: actionTypes.TOGGLE_CART,
+    };
+};
+
+export const toggleAuthModal = () => {
+    return {
+        type: actionTypes.TOGGLE_AUTH_MODAL,
     };
 };

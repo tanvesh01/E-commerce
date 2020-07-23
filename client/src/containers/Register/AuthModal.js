@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { motion, AnimatePresence } from "framer-motion";
-import Cart from "../Cart/Scart";
+import Register from "../Register/Register";
 const useStyles = makeStyles((theme) => ({
     backdrop: {
         zIndex: "100",
@@ -15,18 +15,18 @@ const useStyles = makeStyles((theme) => ({
         //backdropFilter: "saturate(533%) blur(1px)",
         backgroundColor: "#0000006b",
     },
-    cartModel: {
+    authModel: {
         display: "flex",
         justifyContent: "center",
-        alignItems: "flex-end",
+        alignItems: "center",
         marginLeft: "20%",
         marginRight: "20%",
         width: "60%",
         height: "100%",
         position: "relative",
+        zIndex: "101",
     },
 }));
-
 const backdrop = {
     visible: {
         opacity: 1,
@@ -40,14 +40,15 @@ const backdrop = {
     exit: {
         opacity: 0,
         transition: {
-            duration: 0.5,
+            duration: 0.1,
         },
     },
 };
 
-const cartVariant = {
+const authVariant = {
     hidden: {
-        y: "100%",
+        opacity: 1,
+        y: "30%",
         transition: {
             duration: 0.5,
         },
@@ -64,13 +65,16 @@ const cartVariant = {
         opacity: 1,
         y: "100%",
         transition: {
-            duration: 0.5,
+            duration: 0.2,
         },
     },
 };
 
-function Modal(props) {
+function AuthModal(props) {
     const classes = useStyles();
+    console.log("====================================");
+    console.log(props.show);
+    console.log("====================================");
     return (
         <AnimatePresence exitBeforeEnter>
             {props.show ? (
@@ -90,17 +94,17 @@ function Modal(props) {
                         initial="hidden"
                         animate="visible"
                         exit="exit"
-                        onClick={props.modalHandler}
+                        onClick={props.authModalHandler}
                         className={classes.backdrop}
                     />
                     <motion.div
-                        variants={cartVariant}
+                        variants={authVariant}
                         initial="hidden"
                         animate="visible"
                         exit="exit"
-                        className={classes.cartModel}
+                        className={classes.authModel}
                     >
-                        <Cart />
+                        <Register />
                     </motion.div>
                 </div>
             ) : null}
@@ -108,4 +112,4 @@ function Modal(props) {
     );
 }
 
-export default Modal;
+export default AuthModal;
