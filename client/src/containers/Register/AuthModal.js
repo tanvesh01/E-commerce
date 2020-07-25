@@ -19,12 +19,24 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        marginLeft: "20%",
-        marginRight: "20%",
+        backgroundColor: "white",
+        borderRadius: "1.5rem",
         width: "60%",
-        height: "100%",
+        height: "60%",
         position: "relative",
         zIndex: "101",
+    },
+    modal: {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        overflow: "auto",
+        zIndex: 99,
     },
 }));
 const backdrop = {
@@ -72,23 +84,10 @@ const authVariant = {
 
 function AuthModal(props) {
     const classes = useStyles();
-    console.log("====================================");
-    console.log(props.show);
-    console.log("====================================");
     return (
         <AnimatePresence exitBeforeEnter>
             {props.show ? (
-                <div
-                    style={{
-                        position: "fixed",
-                        top: 0,
-                        left: 0,
-                        width: "100%",
-                        height: "100%",
-                        overflow: "auto",
-                        zIndex: 99,
-                    }}
-                >
+                <div className={classes.modal}>
                     <motion.div
                         variants={backdrop}
                         initial="hidden"
@@ -104,7 +103,9 @@ function AuthModal(props) {
                         exit="exit"
                         className={classes.authModel}
                     >
-                        <Register />
+                        <div style={{ width: "80%" }}>
+                            <Register />
+                        </div>
                     </motion.div>
                 </div>
             ) : null}

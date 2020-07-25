@@ -33,29 +33,19 @@ class Register extends Component {
     render() {
         return (
             <React.Fragment>
-                <div
-                    style={{
-                        backgroundColor: "white",
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center`",
-                    }}
-                >
-                    <div>
-                        <h1>Form!</h1>
-                        {this.state.msg != null ? <Alert msg={this.state.msg} /> : null}
-                        {this.props.isLogin && !this.props.isAuth ? (
-                            <LoginForm isAuth={this.props.isAuth} />
-                        ) : (
-                            <RegisterForm isAuth={this.props.isAuth} />
-                        )}
-                        <Button onClick={() => this.props.changeMode()}>
-                            {this.props.isLogin ? "Are you a new user? " : "Already a user?"}
-                        </Button>
-                        <Button component={Link} to="/products">
-                            go back
-                        </Button>
-                    </div>
+                {this.state.msg != null ? <Alert msg={this.state.msg} /> : null}
+                {this.props.isLogin && !this.props.isAuth ? (
+                    <LoginForm isAuth={this.props.isAuth} />
+                ) : (
+                    <RegisterForm isAuth={this.props.isAuth} />
+                )}
+                <div style={{ textAlign: "center", width: "100%" }}>
+                    <Button
+                        style={{ color: "white", backgroundColor: "black", width: "100%" }}
+                        onClick={() => this.props.changeMode()}
+                    >
+                        {this.props.isLogin ? "Are you a new user? " : "Already a user?"}
+                    </Button>
                 </div>
             </React.Fragment>
         );

@@ -26,6 +26,9 @@ const theme = createMuiTheme({
         h3: {
             fontFamily: "'Bebas Neue', cursive",
         },
+        p: {
+            fontFamily: " 'Jost', sans-serif",
+        },
     },
 });
 export default theme;

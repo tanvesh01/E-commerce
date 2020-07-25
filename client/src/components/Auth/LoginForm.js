@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { TextField, Button } from "@material-ui/core";
+import { TextField, Button, Typography } from "@material-ui/core";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/authActions";
 import { withRouter } from "react-router-dom";
@@ -8,15 +8,36 @@ import * as yup from "yup";
 import { Formik, Form, useField } from "formik";
 const useStyles = makeStyles((theme) => ({
     root: {
-        margin: "3rem",
+        marginBottom: "1rem",
+        width: "100%",
+        "& label.Mui-focused": {
+            color: "grey",
+        },
+        "& .MuiInput-underline:after": {
+            borderBottomColor: "red",
+        },
+        "& .MuiOutlinedInput-root": {
+            "& fieldset": {
+                borderColor: "black",
+                borderWidth: "3px",
+            },
+            "&:hover fieldset": {
+                borderColor: "grey",
+            },
+            "&.Mui-focused fieldset": {
+                borderColor: "black",
+            },
+        },
     },
 }));
 
 const CustomField = ({ label, type, variant, ...props }) => {
     const [field, meta] = useField(props);
     const errorText = meta.error && meta.touched ? meta.error : "";
+    const classes = useStyles();
     return (
         <TextField
+            className={classes.root}
             variant={variant}
             label={label}
             {...field}
@@ -43,10 +64,15 @@ function LoginForm(props) {
         //props.history.push("/products");
         props.login(user, props.history);
     };
-    const classes = useStyles();
 
     return (
         <div>
+            <Typography variant="h3" style={{ textAlign: "center", fontSize: "4rem" }}>
+                Welcome back
+            </Typography>
+            <div style={{ textAlign: "center", marginBottom: "1.3rem" }}>
+                <Typography variant="p">Log in now to shop anything you want</Typography>
+            </div>
             <Formik
                 initialValues={{ email: "", password: "" }}
                 onSubmit={(data, { setSubmitting }) => {
@@ -56,20 +82,13 @@ function LoginForm(props) {
                     setSubmitting(false);
                 }}
                 validationSchema={validationSchema}
-                //*validate={(values) => {
-                //*    const errors = {};
-                //*    if (values.email.indexOf("@") == -1 || values.email.indexOf(".") == -1) {
-                //*        errors.email = "Enter a valid email :)"
-                //*    }
-                //*    return errors;
-                //*}}
             >
                 {({ values, errors, isSubmitting }) => (
                     <Form>
-                        <div className={classes.root}>
+                        <div>
                             <CustomField label="Email" variant="outlined" name="email" />
                         </div>
-                        <div className={classes.root}>
+                        <div>
                             <CustomField
                                 label="Password"
                                 type="password"
@@ -77,8 +96,12 @@ function LoginForm(props) {
                                 name="password"
                             />
                         </div>
-                        <div className={classes.root}>
-                            <Button disabled={isSubmitting} type="submit">
+                        <div style={{ textAlign: "center", width: "100%", marginBottom: "1rem" }}>
+                            <Button
+                                disabled={isSubmitting}
+                                style={{ color: "white", backgroundColor: "black", width: "100%" }}
+                                type="submit"
+                            >
                                 Submit
                             </Button>
                         </div>
