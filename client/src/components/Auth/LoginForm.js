@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField, Button, Typography } from "@material-ui/core";
 import { connect } from "react-redux";
+import { motion } from "framer-motion";
 import * as actions from "../../store/actions/authActions";
 import { withRouter } from "react-router-dom";
 import * as yup from "yup";
@@ -52,7 +53,6 @@ const validationSchema = yup.object({
     email: yup.string().email("Enter a valid Email :)").required(),
     password: yup.string().min(3, "Too short :(").required(),
 });
-
 function LoginForm(props) {
     console.log(props);
     const handleSubmit = (email, password) => {
@@ -66,7 +66,7 @@ function LoginForm(props) {
     };
 
     return (
-        <div>
+        <motion.div>
             <Typography variant="h3" style={{ textAlign: "center", fontSize: "4rem" }}>
                 Welcome back
             </Typography>
@@ -102,13 +102,13 @@ function LoginForm(props) {
                                 style={{ color: "white", backgroundColor: "black", width: "100%" }}
                                 type="submit"
                             >
-                                Submit
+                                Log in
                             </Button>
                         </div>
                     </Form>
                 )}
             </Formik>
-        </div>
+        </motion.div>
     );
 }
 

@@ -60,7 +60,7 @@ const backdrop = {
 const authVariant = {
     hidden: {
         opacity: 1,
-        y: "30%",
+        y: "100%",
         transition: {
             duration: 0.5,
         },
@@ -71,6 +71,7 @@ const authVariant = {
         y: "0%",
         transition: {
             duration: 0.5,
+            type: "spring",
         },
     },
     exit: {
