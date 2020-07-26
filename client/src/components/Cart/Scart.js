@@ -18,7 +18,6 @@ function Cart(props) {
                         Your Cart
                     </Typography>
                 </div>
-                <div className={classes.svg}></div>
             </div>
             <div className={classes.info}>
                 <div className={classes.row}>
@@ -37,6 +36,7 @@ function Cart(props) {
                             <div className={` ${classes.products} ${classes.col}`}>
                                 <Product
                                     name={x.name}
+                                    brand={x.brand}
                                     size={props.sizes[index]}
                                     image={x.imageLink}
                                 />
@@ -47,6 +47,7 @@ function Cart(props) {
                                         display: "flex",
                                         flexDirection: "row",
                                         justifyContent: "space-between",
+                                        alignItems: "center",
                                     }}
                                 >
                                     <div className={classes.price}>{x.price}</div>

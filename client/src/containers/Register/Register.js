@@ -31,6 +31,9 @@ class Register extends Component {
         }
     }
     render() {
+        console.log("====================================");
+        console.log(this.state.msg);
+        console.log("====================================");
         return (
             <React.Fragment>
                 {this.state.msg != null ? <Alert msg={this.state.msg} /> : null}

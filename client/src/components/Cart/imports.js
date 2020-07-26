@@ -58,14 +58,15 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: "column",
         flexBasis: "100%",
         flex: 1,
+        justifyContent: "center",
     },
     product: {
         display: "block",
         margin: "2rem",
     },
     price: {
-        marginLeft: "4rem",
-        lineHeight: "8.43",
+        marginLeft: "50%",
+        //paddingTop: "25%",
     },
 }));
 

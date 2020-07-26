@@ -70,7 +70,6 @@ export const login = ({ email, password }, history) => (dispatch) => {
     axios
         .post("/api/auth", body, config)
         .then((res) => {
-            //history.push("/products");
             dispatch({
                 type: actionTypes.LOGIN_SUCCESS,
                 payload: res.data,
@@ -78,10 +77,10 @@ export const login = ({ email, password }, history) => (dispatch) => {
         })
         .catch((err) => {
             console.log(err);
-            // dispatch(returnErrors(err.response.data, err.response.status, "LOGIN_FAIL"));
-            // dispatch({
-            //     type: actionTypes.LOGIN_FAIL,
-            // });
+            dispatch(returnErrors(err.response.data, err.response.status, "LOGIN_FAIL"));
+            dispatch({
+                type: actionTypes.LOGIN_FAIL,
+            });
         });
 };
 

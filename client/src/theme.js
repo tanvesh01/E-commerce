@@ -26,7 +26,7 @@ const theme = createMuiTheme({
         h3: {
             fontFamily: "'Bebas Neue', cursive",
         },
-        p: {
+        subtitle1: {
             fontFamily: " 'Jost', sans-serif",
         },
     },
