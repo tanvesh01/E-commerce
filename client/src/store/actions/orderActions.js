@@ -15,6 +15,12 @@ export const selectSize = (size) => {
     };
 };
 
+export const submitForm = () => {
+    return {
+        type: actionTypes.SUBMIT_FORM,
+    };
+};
+
 export const submitOrder = (item) => {
     return (dispatch) => {
         axios
@@ -28,10 +34,7 @@ export const submitOrder = (item) => {
             })
             .catch((err) => {
                 console.log(err);
-                // dispatch(returnErrors(
-                //     err.response.data,
-                //     err.response.status
-                // ))
+                // dispatch(returnErrors(err.response.data, err.response.status));
             });
     };
 };

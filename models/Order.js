@@ -12,7 +12,7 @@ const OrderSchema = new Schema({
     sizes: [String],
     phone: String,
     address: String,
-    pin: Number,
+    pin: String,
     email: String,
 });
 

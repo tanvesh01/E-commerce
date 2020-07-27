@@ -59,9 +59,6 @@ function ResponsiveDrawer(props) {
                 <BrandList items={props.items} />
                 <PriceSlider />
                 <Cart data={props.cart} />
-                <Button component={Link} to="/register">
-                    Register
-                </Button>
             </List>
         </div>
     );

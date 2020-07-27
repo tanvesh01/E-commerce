@@ -1,36 +1,11 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { useStyles } from "../Auth/FormStyles";
 import { TextField, Button, Typography } from "@material-ui/core";
 import { connect } from "react-redux";
-import { motion, AnimatePresence } from "framer-motion";
 import * as actions from "../../store/actions/authActions";
 import { withRouter } from "react-router-dom";
 import * as yup from "yup";
 import { Formik, Form, useField } from "formik";
-const useStyles = makeStyles((theme) => ({
-    root: {
-        marginBottom: "1rem",
-        width: "100%",
-        "& label.Mui-focused": {
-            color: "grey",
-        },
-        "& .MuiInput-underline:after": {
-            borderBottomColor: "red",
-        },
-        "& .MuiOutlinedInput-root": {
-            "& fieldset": {
-                borderColor: "black",
-                borderWidth: "3px",
-            },
-            "&:hover fieldset": {
-                borderColor: "grey",
-            },
-            "&.Mui-focused fieldset": {
-                borderColor: "black",
-            },
-        },
-    },
-}));
 
 const CustomField = ({ label, type, variant, ...props }) => {
     const [field, meta] = useField(props);
@@ -53,19 +28,6 @@ const validationSchema = yup.object({
     email: yup.string().email("Enter a valid Email :)").required(),
     password: yup.string().min(3, "Too short :(").required(),
 });
-const modal = {
-    hidden: {
-        opacity: 0,
-        x: "-100%",
-    },
-    animate: {
-        x: "0%",
-        opacity: 1,
-        transition: {
-            duration: 1,
-        },
-    },
-};
 function LoginForm(props) {
     console.log(props);
     const handleSubmit = (email, password) => {
@@ -78,57 +40,53 @@ function LoginForm(props) {
         props.login(user);
     };
     return (
-        <AnimatePresence exitBeforeEnter>
-            <motion.div initial="hidden" animate="animate" variants={modal}>
-                <Typography variant="h3" style={{ textAlign: "center", fontSize: "4rem" }}>
-                    Welcome back
-                </Typography>
-                <div style={{ textAlign: "center", marginBottom: "1.3rem" }}>
-                    <Typography variant="p">Log in now to shop anything you want</Typography>
-                </div>
-                <Formik
-                    initialValues={{ email: "", password: "" }}
-                    onSubmit={(data, { setSubmitting }) => {
-                        setSubmitting(true);
-                        //! make async call here!!!!
-                        handleSubmit(data.email, data.password);
-                        setSubmitting(false);
-                    }}
-                    validationSchema={validationSchema}
-                >
-                    {({ values, errors, isSubmitting }) => (
-                        <Form>
-                            <div>
-                                <CustomField label="Email" variant="outlined" name="email" />
-                            </div>
-                            <div>
-                                <CustomField
-                                    label="Password"
-                                    type="password"
-                                    variant="outlined"
-                                    name="password"
-                                />
-                            </div>
-                            <div
-                                style={{ textAlign: "center", width: "100%", marginBottom: "1rem" }}
+        <div>
+            <Typography variant="h3" style={{ textAlign: "center", fontSize: "4rem" }}>
+                Welcome back
+            </Typography>
+            <div style={{ textAlign: "center", marginBottom: "1.3rem" }}>
+                <Typography variant="p">Log in now to shop anything you want</Typography>
+            </div>
+            <Formik
+                initialValues={{ email: "", password: "" }}
+                onSubmit={(data, { setSubmitting }) => {
+                    setSubmitting(true);
+                    //! make async call here!!!!
+                    handleSubmit(data.email, data.password);
+                    setSubmitting(false);
+                }}
+                validationSchema={validationSchema}
+            >
+                {({ values, errors, isSubmitting }) => (
+                    <Form>
+                        <div>
+                            <CustomField label="Email" variant="outlined" name="email" />
+                        </div>
+                        <div>
+                            <CustomField
+                                label="Password"
+                                type="password"
+                                variant="outlined"
+                                name="password"
+                            />
+                        </div>
+                        <div style={{ textAlign: "center", width: "100%", marginBottom: "1rem" }}>
+                            <Button
+                                disabled={isSubmitting}
+                                style={{
+                                    color: "white",
+                                    backgroundColor: "black",
+                                    width: "100%",
+                                }}
+                                type="submit"
                             >
-                                <Button
-                                    disabled={isSubmitting}
-                                    style={{
-                                        color: "white",
-                                        backgroundColor: "black",
-                                        width: "100%",
-                                    }}
-                                    type="submit"
-                                >
-                                    Log in
-                                </Button>
-                            </div>
-                        </Form>
-                    )}
-                </Formik>
-            </motion.div>
-        </AnimatePresence>
+                                Log in
+                            </Button>
+                        </div>
+                    </Form>
+                )}
+            </Formik>
+        </div>
     );
 }
 

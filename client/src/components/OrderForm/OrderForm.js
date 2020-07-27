@@ -1,14 +1,47 @@
 import React from "react";
-import { useStyles } from "../Auth/FormStyles";
 import { TextField, Button, Typography } from "@material-ui/core";
 import { connect } from "react-redux";
-import * as actions from "../../store/actions/authActions";
+import { submitOrder } from "../../store/actions/orderActions";
 import * as yup from "yup";
 import { Formik, Form, useField } from "formik";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        marginBottom: "1rem",
+        width: "100%",
+        "& label.Mui-focused": {
+            color: "grey",
+        },
+        "& .MuiInput-underline:after": {
+            borderBottomColor: "red",
+        },
+        "& .MuiOutlinedInput-root": {
+            "& fieldset": {
+                borderColor: "black",
+                borderWidth: "3px",
+            },
+            "&:hover fieldset": {
+                borderColor: "grey",
+            },
+            "&.Mui-focused fieldset": {
+                borderColor: "black",
+            },
+        },
+    },
+    submitModel: {
+        backgroundColor: "white",
+        width: "100%",
+        padding: "2rem",
+        height: "81%",
+    },
+}));
 const validationSchema = yup.object({
     name: yup.string().required(),
     email: yup.string().email("Enter a valid Email :)").required(),
-    password: yup.string().min(3, "Too short :(").required(),
+    address: yup.string().required("A valid address is required"),
+    phone: yup.string().min(7, "should atlest be 7 digits").required(),
+    pin: yup.string().min(7, "should atlest be 7 digits").required(),
 });
 
 const CustomField = ({ label, type, variant, ...props }) => {
@@ -28,30 +61,39 @@ const CustomField = ({ label, type, variant, ...props }) => {
     );
 };
 
-function RegisterForm(props) {
-    const handleSubmit = (name, email, password) => {
-        const newUser = {
+function OrderForm(props) {
+    const submit = (name, email, phone, address, pin) => {
+        let ids = [];
+        for (let i = 0; i < props.cart.length; i++) {
+            ids.push(props.cart[i]._id);
+        }
+        const order = {
+            products: ids,
             name: name,
-            password: password,
+            sizes: props.sizes,
+            phone: phone,
+            address: address,
+            pin: pin,
             email: email,
         };
-        props.register(newUser);
+        console.log(order);
+        props.submitOrder(order);
     };
     const classes = useStyles();
     return (
-        <div>
+        <div className={classes.submitModel}>
             <Typography variant="h3" style={{ textAlign: "center", fontSize: "4rem" }}>
-                Welcome
+                Just some details
             </Typography>
             <div style={{ textAlign: "center", marginBottom: "1.3rem" }}>
                 <Typography variant="p">Sign un now to shop anything you want</Typography>
             </div>
             <Formik
-                initialValues={{ name: "", email: "", password: "" }}
+                initialValues={{ name: "", email: "", phone: "", address: "", pin: "" }}
                 onSubmit={(data, { setSubmitting }) => {
                     setSubmitting(true);
                     //! make async call here!!!!
-                    handleSubmit(data.name, data.email, data.password);
+                    submit(data.name, data.email, data.phone, data.address, data.pin);
                     setSubmitting(false);
                 }}
                 validationSchema={validationSchema}
@@ -65,12 +107,13 @@ function RegisterForm(props) {
                             <CustomField label="Email" variant="outlined" name="email" />
                         </div>
                         <div>
-                            <CustomField
-                                label="Password"
-                                type="password"
-                                variant="outlined"
-                                name="password"
-                            />
+                            <CustomField label="Phone" variant="outlined" name="phone" />
+                        </div>
+                        <div>
+                            <CustomField label="Address" variant="outlined" name="address" />
+                        </div>
+                        <div>
+                            <CustomField label="Pin" variant="outlined" name="pin" />
                         </div>
                         <div style={{ textAlign: "center", width: "100%", marginBottom: "1rem" }}>
                             <Button
@@ -78,7 +121,7 @@ function RegisterForm(props) {
                                 style={{ color: "white", backgroundColor: "black", width: "100%" }}
                                 type="submit"
                             >
-                                Sign up
+                                Submit
                             </Button>
                         </div>
                     </Form>
@@ -88,11 +131,17 @@ function RegisterForm(props) {
     );
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state) => {
     return {
-        register: (newUser) => dispatch(actions.register(newUser)),
-        logOut: () => dispatch(actions.logOut()),
+        cart: state.orders.cart,
+        sizes: state.orders.sizes,
     };
 };
 
-export default connect(null, mapDispatchToProps)(RegisterForm);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        submitOrder: (order) => dispatch(submitOrder(order)),
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(OrderForm);

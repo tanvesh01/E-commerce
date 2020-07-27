@@ -1,7 +1,11 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { motion, AnimatePresence } from "framer-motion";
+import { connect } from "react-redux";
+import { submitForm } from "../../store/actions/orderActions";
+import OrderForm from "../OrderForm/OrderForm";
 import Cart from "../Cart/Scart";
+import { Button } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
     backdrop: {
         zIndex: "100",
@@ -100,7 +104,8 @@ function Modal(props) {
                         exit="exit"
                         className={classes.cartModel}
                     >
-                        <Cart />
+                        {props.isSubmit ? <OrderForm /> : <Cart />}
+                        <Button onClick={() => props.submitForm()}> Submit </Button>
                     </motion.div>
                 </div>
             ) : null}
@@ -108,4 +113,16 @@ function Modal(props) {
     );
 }
 
-export default Modal;
+const mapStateToProps = (state) => {
+    return {
+        isSubmit: state.orders.isSubmit,
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        submitForm: () => dispatch(submitForm()),
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Modal);

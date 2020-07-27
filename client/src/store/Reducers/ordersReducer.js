@@ -6,6 +6,7 @@ const initState = {
     selectedSize: null,
     showCart: false,
     showAuthModal: false,
+    isSubmit: false,
 };
 
 const reducer = (state = initState, action) => {
@@ -26,6 +27,7 @@ const reducer = (state = initState, action) => {
             return {
                 ...state,
                 showCart: !state.showCart,
+                isSubmit: false,
             };
         case actionTypes.SELECT_SIZE:
             return {
@@ -36,6 +38,11 @@ const reducer = (state = initState, action) => {
             return {
                 ...state,
                 showAuthModal: !state.showAuthModal,
+            };
+        case actionTypes.SUBMIT_FORM:
+            return {
+                ...state,
+                isSubmit: !state.isSubmit,
             };
         default:
             return state;
