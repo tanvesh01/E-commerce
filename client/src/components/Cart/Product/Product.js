@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         flexDirection: "column",
         flexBasis: "100%",
+        justifyContent: "center",
         flex: 1,
     },
     inImage: {

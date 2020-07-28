@@ -58,7 +58,6 @@ function ResponsiveDrawer(props) {
                 {/* ::::::::: FILTERS STARTS HERE ::::::::: */}
                 <BrandList items={props.items} />
                 <PriceSlider />
-                <Cart data={props.cart} />
             </List>
         </div>
     );

@@ -21,7 +21,6 @@ class Cart extends Component {
         });
     };
     render() {
-        console.log(this.props.cart);
         return (
             <div>
                 <ul>

@@ -1,7 +1,8 @@
 import React from "react";
 import { TextField, Button, Typography } from "@material-ui/core";
 import { connect } from "react-redux";
-import { submitOrder } from "../../store/actions/orderActions";
+import { submitOrder, submitForm } from "../../store/actions/orderActions";
+import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import * as yup from "yup";
 import { Formik, Form, useField } from "formik";
 import { makeStyles } from "@material-ui/core/styles";
@@ -33,7 +34,9 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: "white",
         width: "100%",
         padding: "2rem",
-        height: "81%",
+        height: "90%",
+        borderTopLeftRadius: "1rem",
+        borderTopRightRadius: "1rem",
     },
 }));
 const validationSchema = yup.object({
@@ -127,6 +130,13 @@ function OrderForm(props) {
                     </Form>
                 )}
             </Formik>
+            <Button
+                onClick={() => props.submitForm()}
+                style={{ color: "white", backgroundColor: "black", width: "100%" }}
+            >
+                <ChevronLeftIcon />
+                Go back
+            </Button>
         </div>
     );
 }
@@ -141,6 +151,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         submitOrder: (order) => dispatch(submitOrder(order)),
+        submitForm: () => dispatch(submitForm()),
     };
 };
 
