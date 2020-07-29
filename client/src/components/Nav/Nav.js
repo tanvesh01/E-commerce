@@ -24,10 +24,8 @@ import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import FaceIcon from "@material-ui/icons/Face";
 import { connect } from "react-redux";
 import { motion } from "framer-motion";
-import * as actions from "../../store/actions/products";
+import { getItem } from "../../store/actions/products";
 import { toggleCart, toggleAuthModal } from "../../store/actions/orderActions";
-import { Link } from "react-router-dom";
-import { Button } from "@material-ui/core";
 function ResponsiveDrawer(props) {
     const { window } = props;
     const classes = useStyles();
@@ -43,15 +41,13 @@ function ResponsiveDrawer(props) {
             <List>
                 <ListItem button onClick={() => props.getItem("shoe")} key={"shoes"}>
                     <ListItemIcon>
-                        {" "}
-                        <InboxIcon />{" "}
+                        <InboxIcon />
                     </ListItemIcon>
                     <ListItemText primary={"shoes"} />
                 </ListItem>
                 <ListItem button onClick={() => props.getItem("Phone")} key={"phones"}>
                     <ListItemIcon>
-                        {" "}
-                        <InboxIcon />{" "}
+                        <InboxIcon />
                     </ListItemIcon>
                     <ListItemText primary={"phones"} />
                 </ListItem>
@@ -182,7 +178,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         toggleCart: () => dispatch(toggleCart()),
         toggleAuthModal: () => dispatch(toggleAuthModal()),
-        getItem: (item) => dispatch(actions.getItem(item)),
+        getItem: (item) => dispatch(getItem(item)),
     };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(ResponsiveDrawer);

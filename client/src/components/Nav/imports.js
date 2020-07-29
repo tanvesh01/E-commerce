@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         flexDirection: "column",
         flexWrap: "wrap",
+        width: "100%",
         position: "absolute",
     },
     modal: {
@@ -61,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
     },
     content: {
         marginTop: "10rem",
-        // flexGrow: 1,
+        flexGrow: 1,
         padding: theme.spacing(3),
     },
     filter: {
