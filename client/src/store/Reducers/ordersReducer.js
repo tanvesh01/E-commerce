@@ -7,10 +7,16 @@ const initState = {
     showCart: false,
     showAuthModal: false,
     isSubmit: false,
+    submitted: false,
 };
 
 const reducer = (state = initState, action) => {
     switch (action.type) {
+        case actionTypes.SUBMITTED:
+            return {
+                ...state,
+                submitted: true,
+            };
         case actionTypes.ADD_TO_CART:
             console.log(action.size);
             return {
@@ -28,6 +34,7 @@ const reducer = (state = initState, action) => {
                 ...state,
                 showCart: !state.showCart,
                 isSubmit: false,
+                submitted: false,
             };
         case actionTypes.SELECT_SIZE:
             return {

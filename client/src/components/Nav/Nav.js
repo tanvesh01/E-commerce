@@ -5,21 +5,20 @@ import {
     Drawer,
     Hidden,
     IconButton,
-    InboxIcon,
     List,
     ListItem,
-    ListItemIcon,
-    ListItemText,
     MenuIcon,
     Toolbar,
     Typography,
     useTheme,
     BrandList,
     PriceSlider,
-    Cart,
     ItemGrid,
     useStyles,
+    listOfButtons,
 } from "./imports";
+import Icon from "./Icon/Icon";
+import Landing from "../Landing/Landing";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import FaceIcon from "@material-ui/icons/Face";
 import { connect } from "react-redux";
@@ -31,26 +30,22 @@ function ResponsiveDrawer(props) {
     const classes = useStyles();
     const theme = useTheme();
     const [mobileOpen, setMobileOpen] = React.useState(false);
-
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
     const drawer = (
         <div className={classes.filter}>
-            <div className={classes.toolbar} />
             <List>
-                <ListItem button onClick={() => props.getItem("shoe")} key={"shoes"}>
-                    <ListItemIcon>
-                        <InboxIcon />
-                    </ListItemIcon>
-                    <ListItemText primary={"shoes"} />
-                </ListItem>
-                <ListItem button onClick={() => props.getItem("Phone")} key={"phones"}>
-                    <ListItemIcon>
-                        <InboxIcon />
-                    </ListItemIcon>
-                    <ListItemText primary={"phones"} />
-                </ListItem>
+                {listOfButtons.map((e) => {
+                    return (
+                        <ListItem button onClick={() => props.getItem(e.category)} key={"shoes"}>
+                            <Icon img={e.data} />
+                            <Typography style={{ fontSize: "2rem" }} variant="h3">
+                                {e.label}
+                            </Typography>
+                        </ListItem>
+                    );
+                })}
                 {/* ::::::::: FILTERS STARTS HERE ::::::::: */}
                 <BrandList items={props.items} />
                 <PriceSlider />
@@ -116,6 +111,7 @@ function ResponsiveDrawer(props) {
                 </Toolbar>
             </AppBar>
             <div className={classes.appBarSpacer} />
+            <Landing />
             <div className={classes.app}>
                 <nav className={classes.drawer} aria-label="mailbox folders">
                     {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
@@ -150,7 +146,6 @@ function ResponsiveDrawer(props) {
                     </Hidden>
                 </nav>
                 <main className={classes.content}>
-                    <div className={classes.toolbar} />
                     <ItemGrid
                         items={props.items}
                         brand={props.brand}

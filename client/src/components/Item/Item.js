@@ -63,7 +63,7 @@ const SimpleCard = (props) => {
                 variants={frameVariants}
                 transition={transition}
             >
-                <Card className={classes.root}>
+                <Card className={classes.root} elevation={0}>
                     <CardActionArea
                         disableRipple
                         disableTouchRipple
@@ -87,23 +87,15 @@ const SimpleCard = (props) => {
                             <Typography style={{ fontSize: "1.8rem" }} variant="h3" component="h3">
                                 {props.data.name}
                             </Typography>
-                            <Typography variant="body2" color="textSecondary" component="p">
-                                {props.data.price}
+                            <Typography
+                                variant="subtitle1"
+                                style={{ fontSize: "1.5rem" }}
+                                component="p"
+                            >
+                                $ {props.data.price}
                             </Typography>
                         </CardContent>
                     </CardActionArea>
-                    {/* <CardActions>
-                        <Button
-                            size="small"
-                            onClick={() => props.addToCart(props.data)}
-                            color="primary"
-                        >
-                            Add to cart
-                        </Button>
-                        <Button size="small" color="primary">
-                            Learn More
-                        </Button>
-                    </CardActions> */}
                 </Card>
             </motion.div>
         </motion.div>

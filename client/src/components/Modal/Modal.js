@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { motion, AnimatePresence } from "framer-motion";
 import { connect } from "react-redux";
-import { submitForm } from "../../store/actions/orderActions";
+import Success from "../OrderForm/Success/Success";
 import OrderForm from "../OrderForm/OrderForm";
 import Cart from "../Cart/Scart";
 const useStyles = makeStyles((theme) => ({
@@ -74,6 +74,14 @@ const cartVariant = {
 
 function Modal(props) {
     const classes = useStyles();
+    let x = null;
+    if (props.submitted) {
+        x = <Success />;
+    } else if (props.isSubmit) {
+        x = <OrderForm />;
+    } else {
+        x = <Cart />;
+    }
     return (
         <AnimatePresence exitBeforeEnter>
             {props.show ? (
@@ -103,7 +111,7 @@ function Modal(props) {
                         exit="exit"
                         className={classes.cartModel}
                     >
-                        {props.isSubmit ? <OrderForm /> : <Cart />}
+                        {x}
                     </motion.div>
                 </div>
             ) : null}
@@ -114,6 +122,7 @@ function Modal(props) {
 const mapStateToProps = (state) => {
     return {
         isSubmit: state.orders.isSubmit,
+        submitted: state.orders.submitted,
     };
 };
 export default connect(mapStateToProps, null)(Modal);

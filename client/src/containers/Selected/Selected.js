@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import Selector from "../../components/Size_selctor/Selector";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import { Button } from "@material-ui/core";
 import * as actions from "../../store/actions/orderActions";
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -72,14 +71,17 @@ const childVariant = {
 };
 
 function Selected(props) {
-    console.log(props.items);
+    console.log(props);
     let prod;
     for (let i = 0; i < props.items.length; i++) {
         if (props.items[i]._id === props.selectedId) {
             prod = props.items[i];
         }
     }
-
+    const f = (prod, selectedSize) => {
+        props.addToCart(prod, selectedSize);
+        props.history.goBack();
+    };
     const classes = useStyles();
     return (
         <div className={classes.root}>
@@ -152,7 +154,14 @@ function Selected(props) {
                                         duration: 0.7,
                                     },
                                 }}
-                                onClick={() => props.addToCart(prod, props.selectedSize)}
+                                whileTap={{
+                                    scale: 0.8,
+                                    transition: {
+                                        type: "spring",
+                                        duration: 0.3,
+                                    },
+                                }}
+                                onClick={() => f(prod, props.selectedSize)}
                             >
                                 Add to cart
                             </motion.button>

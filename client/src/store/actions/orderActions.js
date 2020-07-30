@@ -27,10 +27,9 @@ export const submitOrder = (item) => {
             .post("/api/orders", item)
             .then((res) => {
                 console.log(res.data);
-                // dispatch({
-                //     type: actionTypes.ADD,
-                //     item: res.data
-                // })
+                dispatch({
+                    type: actionTypes.SUBMITTED,
+                });
             })
             .catch((err) => {
                 console.log(err);

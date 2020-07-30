@@ -20,8 +20,7 @@ const theme = createMuiTheme({
         //     fontSize: "2rem",
         // },
         h1: {
-            fontFamily: "'Montserrat', sans-serif",
-            fontSize: "3rem",
+            fontFamily: "'Abril Fatface', cursive",
         },
         h3: {
             fontFamily: "'Bebas Neue', cursive",
