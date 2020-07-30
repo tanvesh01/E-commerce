@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import { Grid } from "@material-ui/core";
 import RegisterForm from "../../components/Auth/RegisterForm";
 import LoginForm from "../../components/Auth/LoginForm";
 import { Button } from "@material-ui/core";
 import { connect } from "react-redux";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import * as actions from "../../store/actions/authActions";
 import Alert from "../../components/Alerts/Alert";
 

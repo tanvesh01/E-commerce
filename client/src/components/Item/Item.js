@@ -1,14 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import {
-    CardActionArea,
-    CardActions,
-    CardMedia,
-    Button,
-    Typography,
-    CardContent,
-    Card,
-} from "@material-ui/core";
+import { CardActionArea, CardMedia, Typography, CardContent, Card } from "@material-ui/core";
 import { motion } from "framer-motion";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";

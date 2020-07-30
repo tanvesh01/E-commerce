@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     appBar: {
-        backdropFilter: "saturate(180%) blur(7px)",
+        backdropFilter: "saturate(180%) blur(20px)",
         backgroundColor: "rgba(241, 242, 249, 0.25)",
         color: "black",
         zIndex: 99,
@@ -69,10 +69,8 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(3),
     },
     filter: {
-        borderRadius: "1.5rem",
         overflow: "auto",
         backgroundColor: "white",
-        //boxShadow: "0px 38px 44px 0px rgba(240,240,240,0.68)",
     },
     app: {
         display: "flex",

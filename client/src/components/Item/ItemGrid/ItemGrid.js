@@ -16,7 +16,6 @@ const ItemGrid = (props) => {
     return (
         <motion.div
             className={classes.root}
-            className="thumbnails"
             initial="initial"
             animate="enter"
             exit="exit"
@@ -24,7 +23,8 @@ const ItemGrid = (props) => {
         >
             <Grid container spacing={3}>
                 {props.items != null ? (
-                    props.items.map(function (x) {
+                    // eslint-disable-next-line
+                    props.items.map((x) => {
                         if (props.brand != null) {
                             if (
                                 x.brand === props.brand &&

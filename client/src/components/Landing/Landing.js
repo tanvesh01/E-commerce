@@ -36,7 +36,6 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         flexDirection: "column",
         flexBasis: "100%",
-        flex: 1,
         justifyContent: "center",
     },
     // head: {
@@ -48,11 +47,11 @@ export default function Landing() {
     const classes = useStyles();
     return (
         <div className={classes.root}>
-            <div className={classes.outer}>
-                <div>
-                    <img width="60%" height="60%" src={BgImage} alt="landing" />
+            <div className={classes.row}>
+                <div style={{ flex: 7 }} className={classes.col}>
+                    <img width="90%" height="90%" src={BgImage} alt="landing" />
                 </div>
-                <div className={classes.inner}>
+                <div style={{ flex: 5 }} className={classes.col}>
                     <Typography variant="h1" className={classes.head}>
                         Do Shopping Like Never Before
                     </Typography>

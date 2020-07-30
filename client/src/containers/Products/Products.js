@@ -4,7 +4,7 @@ import Modal from "../../components/Modal/Modal";
 import AuthModal from "../Register/AuthModal";
 import { connect } from "react-redux";
 import { toggleAuthModal, toggleCart } from "../../store/actions/orderActions";
-
+import { loadUser } from "../../store/actions/authActions";
 class Products extends Component {
     modalHandler = () => {
         this.props.toggleCart();
@@ -12,9 +12,9 @@ class Products extends Component {
     authModalHandler = () => {
         this.props.toggleAuthModal();
     };
-    // componentDidMount() {
-    //     this.props.loadUser();
-    // }
+    componentDidMount() {
+        this.props.loadUser();
+    }
     render() {
         return (
             <div style={{ height: "100%", width: "100%", display: "block" }}>
@@ -42,6 +42,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         toggleCart: () => dispatch(toggleCart()),
         toggleAuthModal: () => dispatch(toggleAuthModal()),
+        loadUser: () => dispatch(loadUser()),
     };
 };
 

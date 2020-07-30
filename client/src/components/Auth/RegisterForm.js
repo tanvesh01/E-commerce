@@ -37,7 +37,6 @@ function RegisterForm(props) {
         };
         props.register(newUser);
     };
-    const classes = useStyles();
     return (
         <div>
             <Typography variant="h3" style={{ textAlign: "center", fontSize: "4rem" }}>
