@@ -3,9 +3,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import { motion } from "framer-motion";
 import { connect } from "react-redux";
 import Selector from "../../components/Size_selctor/Selector";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import * as actions from "../../store/actions/orderActions";
+import { Grid, Typography } from "@material-ui/core";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import { addToCart } from "../../store/actions/orderActions";
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -162,8 +162,22 @@ function Selected(props) {
                                     },
                                 }}
                                 onClick={() => f(prod, props.selectedSize)}
+                                disabled={!props.isAuth}
                             >
-                                Add to cart
+                                <div
+                                    style={{
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                    }}
+                                >
+                                    {props.isAuth ? "Add to cart" : " You have to login first"}
+                                    {props.isAuth ? null : (
+                                        <LockOutlinedIcon
+                                            style={{ marginLeft: "4px", marginBottom: "4px" }}
+                                        />
+                                    )}
+                                </div>
                             </motion.button>
                         </motion.div>
                     </motion.div>
@@ -177,11 +191,12 @@ const mapStateToProps = (state) => {
         selectedSize: state.orders.selectedSize,
         selectedId: state.category.selected,
         items: state.category.items,
+        isAuth: state.auth.isAuth,
     };
 };
 const mapDispatchToProps = (dispatch) => {
     return {
-        addToCart: (data, size) => dispatch(actions.addToCart(data, size)),
+        addToCart: (data, size) => dispatch(addToCart(data, size)),
     };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Selected);

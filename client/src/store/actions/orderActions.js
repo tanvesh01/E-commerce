@@ -51,9 +51,3 @@ export const toggleCart = () => {
         type: actionTypes.TOGGLE_CART,
     };
 };
-
-export const toggleAuthModal = () => {
-    return {
-        type: actionTypes.TOGGLE_AUTH_MODAL,
-    };
-};

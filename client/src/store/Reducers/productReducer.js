@@ -20,6 +20,7 @@ const reducer = (state = initState, actions) => {
                 ...state,
                 items: actions.data,
                 loading: false,
+                brand: null,
             };
         case actionTypes.SET_BRAND:
             return {

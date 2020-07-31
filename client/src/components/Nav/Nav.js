@@ -24,7 +24,8 @@ import FaceIcon from "@material-ui/icons/Face";
 import { connect } from "react-redux";
 import { motion } from "framer-motion";
 import { getItem } from "../../store/actions/products";
-import { toggleCart, toggleAuthModal } from "../../store/actions/orderActions";
+import { toggleCart } from "../../store/actions/orderActions";
+import { toggleAuthModal } from "../../store/actions/authActions";
 function ResponsiveDrawer(props) {
     const { window } = props;
     const classes = useStyles();
@@ -61,13 +62,13 @@ function ResponsiveDrawer(props) {
         animate: {
             opacity: 1,
             transition: {
-                duration: 0.5,
+                duration: 3,
             },
         },
         exit: {
             opacity: 0,
             transition: {
-                duration: 0.5,
+                duration: 1.5,
             },
         },
     };
@@ -104,9 +105,13 @@ function ResponsiveDrawer(props) {
                         >
                             <ShoppingCartOutlinedIcon />
                         </IconButton>
-                        <IconButton onClick={() => props.toggleAuthModal()}>
-                            <FaceIcon />
-                        </IconButton>
+                        {props.isAuth ? (
+                            "Welcome back" + props.user.name
+                        ) : (
+                            <IconButton onClick={() => props.toggleAuthModal()}>
+                                <FaceIcon />
+                            </IconButton>
+                        )}
                     </div>
                 </Toolbar>
             </AppBar>
@@ -166,6 +171,8 @@ const mapStateToProps = (state) => {
         brand: state.category.brand,
         minPrice: state.category.minPrice,
         maxPrice: state.category.maxPrice,
+        isAuth: state.auth.isAuth,
+        user: state.auth.user,
     };
 };
 

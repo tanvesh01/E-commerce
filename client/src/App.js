@@ -1,7 +1,6 @@
 import React from "react";
 import Home from "./components/Home/Home";
 import Products from "./containers/Products/Products";
-import Register from "./containers/Register/Register";
 import { Switch, Route, useLocation, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { AnimatePresence } from "framer-motion";
@@ -23,14 +22,15 @@ function App(props) {
                     height: "100%",
                 }}
             >
+                {/* <AnimatePresence exitBeforeEnter>  key={location.pathname} */}
                 <AnimatePresence exitBeforeEnter>
                     <Switch location={location} key={location.pathname}>
                         <Route path="/products" component={Products} />
                         <Route path="/select" component={Selected} />
-                        <Route path="/register" component={withRouter(Register)} />
                         <Route path="/" component={Home} />
                     </Switch>
                 </AnimatePresence>
+                {/* </AnimatePresence> */}
             </div>
         </ThemeProvider>
     );

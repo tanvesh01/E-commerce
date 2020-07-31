@@ -2,6 +2,12 @@ import * as actionTypes from "./actionTypes";
 import { returnErrors } from "./errorActions";
 import axios from "axios";
 
+export const toggleAuthModal = () => {
+    return {
+        type: actionTypes.TOGGLE_AUTH_MODAL,
+    };
+};
+
 //* Check token and load user
 
 export const loadUser = () => (dispatch, getState) => {
