@@ -51,7 +51,7 @@ const ItemGrid = (props) => {
                         }
                     })
                 ) : (
-                    <p>loading.....</p>
+                    <p>Please Select any category</p>
                 )}
             </Grid>
         </motion.div>

@@ -8,7 +8,6 @@ const ProductSchema = new Schema({
     rating: Number,
     imageLink: String,
     sizes: [String],
-    size: String,
     discription: String,
     category: String,
 });

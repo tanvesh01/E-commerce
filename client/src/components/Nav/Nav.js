@@ -20,12 +20,13 @@ import {
 import Icon from "./Icon/Icon";
 import Landing from "../Landing/Landing";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import FaceIcon from "@material-ui/icons/Face";
 import { connect } from "react-redux";
 import { motion } from "framer-motion";
 import { getItem } from "../../store/actions/products";
 import { toggleCart } from "../../store/actions/orderActions";
-import { toggleAuthModal } from "../../store/actions/authActions";
+import { toggleAuthModal, logOut } from "../../store/actions/authActions";
 function ResponsiveDrawer(props) {
     const { window } = props;
     const classes = useStyles();
@@ -94,8 +95,12 @@ function ResponsiveDrawer(props) {
                         <MenuIcon />
                     </IconButton>
                     <div>
-                        <Typography variant="h6" noWrap>
-                            Shopify
+                        <Typography
+                            variant="h3"
+                            style={{ borderBottom: "6px black solid", height: "52px" }}
+                            noWrap
+                        >
+                            ECORP
                         </Typography>
                     </div>
                     <div>
@@ -106,7 +111,12 @@ function ResponsiveDrawer(props) {
                             <ShoppingCartOutlinedIcon />
                         </IconButton>
                         {props.isAuth ? (
-                            "Welcome back" + props.user.name
+                            <>
+                                {"Welcome back, " + props.user.name + "  "}
+                                <IconButton onClick={() => props.logOut()}>
+                                    <ExitToAppIcon />
+                                </IconButton>
+                            </>
                         ) : (
                             <IconButton onClick={() => props.toggleAuthModal()}>
                                 <FaceIcon />
@@ -181,6 +191,7 @@ const mapDispatchToProps = (dispatch) => {
         toggleCart: () => dispatch(toggleCart()),
         toggleAuthModal: () => dispatch(toggleAuthModal()),
         getItem: (item) => dispatch(getItem(item)),
+        logOut: () => dispatch(logOut()),
     };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(ResponsiveDrawer);

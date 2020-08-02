@@ -89,7 +89,9 @@ function OrderForm(props) {
                 Just some details
             </Typography>
             <div style={{ textAlign: "center", marginBottom: "1.3rem" }}>
-                <Typography variant="p">Sign un now to shop anything you want</Typography>
+                <Typography variant="p">
+                    Some details to deliver your Order at the right place
+                </Typography>
             </div>
             <Formik
                 initialValues={{ name: "", email: "", phone: "", address: "", pin: "" }}
@@ -124,7 +126,7 @@ function OrderForm(props) {
                                 style={{ color: "white", backgroundColor: "black", width: "100%" }}
                                 type="submit"
                             >
-                                Submit
+                                Place Order
                             </Button>
                         </div>
                     </Form>

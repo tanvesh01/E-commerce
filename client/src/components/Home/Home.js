@@ -54,7 +54,6 @@ class Home extends Component {
                 },
             },
         };
-        console.log(this.context);
         return (
             <motion.div
                 initial="initial"
@@ -73,6 +72,7 @@ class Home extends Component {
                     className={classNames("table__cell", { active: this.state.fashionOpen })}
                     onMouseEnter={this.toggleFashionOpen}
                     onMouseLeave={this.toggleFashionOpen}
+                    onClick={() => this.nav("clothing")}
                 >
                     <span
                         style={{
@@ -120,7 +120,7 @@ class Home extends Component {
                     className={classNames("table__cell", { active: this.state.aceesOpen })}
                     onMouseEnter={this.toggleAceesOpen}
                     onMouseLeave={this.toggleAceesOpen}
-                    onClick={() => this.nav("shoe")}
+                    onClick={() => this.nav("phone")}
                 >
                     <span
                         style={{
@@ -142,6 +142,7 @@ class Home extends Component {
                     className={classNames("table__cell", { active: this.state.ElectronicsOpen })}
                     onMouseEnter={this.toggleElectronicsOpen}
                     onMouseLeave={this.toggleElectronicsOpen}
+                    onClick={() => this.nav("accessories")}
                 >
                     <span
                         style={{

@@ -36,7 +36,7 @@ class Products extends Component {
 const mapStateToProps = (state) => {
     return {
         show: state.orders.showCart,
-        showAuthModal: state.orders.showAuthModal,
+        showAuthModal: state.auth.showAuthModal,
     };
 };
 

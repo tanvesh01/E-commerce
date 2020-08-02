@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     },
     appBar: {
         backdropFilter: "saturate(180%) blur(20px)",
-        backgroundColor: "rgba(241, 242, 249, 0.25)",
+        backgroundColor: "#ffffff40",
         color: "black",
         zIndex: 99,
     },
@@ -81,9 +81,9 @@ const useStyles = makeStyles((theme) => ({
 
 const listOfButtons = [
     { label: "Footwear", category: "shoe", data: Footwear },
-    { label: "Phones", category: "Phone", data: Phones },
-    { label: "Clothing", category: "clothes", data: clothing },
+    { label: "Clothing", category: "clothing", data: clothing },
     { label: "Accessories", category: "accessories", data: accessories },
+    { label: "Phones", category: "phone", data: Phones },
 ];
 
 export {
