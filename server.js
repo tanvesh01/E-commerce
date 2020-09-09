@@ -10,7 +10,7 @@ mongoose.set("useCreateIndex", true);
 mongoose.set("useUnifiedTopology", true);
 mongoose
     .connect(
-        "mongodb+srv://retro:dedsec@ecom.ycg4m.gcp.mongodb.net/Ecom?retryWrites=true&w=majority"
+        process.env.MONGODB_URI
     )
     .then(() => console.log("Connected to DataBase"))
     .catch((err) => console.log("error: ", err.message));
