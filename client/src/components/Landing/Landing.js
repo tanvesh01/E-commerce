@@ -52,7 +52,7 @@ export default function Landing() {
                     <img width="90%" height="90%" src={BgImage} alt="landing" />
                 </div>
                 <div style={{ flex: 5 }} className={classes.col}>
-                    <Typography variant="h1" className={classes.head}>
+                    <Typography variant="h5" className={classes.head}>
                         Do Shopping Like Never Before
                     </Typography>
                 </div>

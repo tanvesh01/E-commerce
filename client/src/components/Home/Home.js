@@ -14,6 +14,7 @@ class Home extends Component {
     nav = (id) => {
         this.props.getItem(id);
         this.props.history.push("/products");
+        console.log("pushed!");
     };
     toggleFashionOpen = () => {
         this.setState({
@@ -38,9 +39,6 @@ class Home extends Component {
 
     render() {
         const home = {
-            initial: {
-                opacity: 0,
-            },
             animate: {
                 opacity: 1,
                 transition: {
@@ -64,12 +62,12 @@ class Home extends Component {
             >
                 <div
                     style={{
-                        backgroundPosition: "center",
+                        backgroundPosition: "center -5rem",
                         backgroundRepeat: "no-repeat",
                         backgroundImage:
                             'url(" https://images.unsplash.com/photo-1505734169265-a86113baa6c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80")',
                     }}
-                    className={classNames("table__cell", { active: this.state.fashionOpen })}
+                    className={classNames("table__cell", { active: false })}
                     onMouseEnter={this.toggleFashionOpen}
                     onMouseLeave={this.toggleFashionOpen}
                     onClick={() => this.nav("clothing")}
@@ -93,7 +91,7 @@ class Home extends Component {
                         backgroundImage:
                             'url(" https://images.unsplash.com/photo-1491553895911-0055eca6402d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80")',
                     }}
-                    className={classNames("table__cell", { active: this.state.shoesOpen })}
+                    className={classNames("table__cell", { active: false })}
                     onMouseEnter={this.toggleShoesOpen}
                     onMouseLeave={this.toggleShoesOpen}
                     onClick={() => this.nav("shoe")}
@@ -117,7 +115,7 @@ class Home extends Component {
                         backgroundImage:
                             'url(" https://images.unsplash.com/photo-1523206489230-c012c64b2b48?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80")',
                     }}
-                    className={classNames("table__cell", { active: this.state.aceesOpen })}
+                    className={classNames("table__cell", { active: false })}
                     onMouseEnter={this.toggleAceesOpen}
                     onMouseLeave={this.toggleAceesOpen}
                     onClick={() => this.nav("phone")}
@@ -139,7 +137,7 @@ class Home extends Component {
                         backgroundImage:
                             'url(" https://images.unsplash.com/3/www.madebyvadim.com.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1061&q=80")',
                     }}
-                    className={classNames("table__cell", { active: this.state.ElectronicsOpen })}
+                    className={classNames("table__cell", { active: false })}
                     onMouseEnter={this.toggleElectronicsOpen}
                     onMouseLeave={this.toggleElectronicsOpen}
                     onClick={() => this.nav("accessories")}

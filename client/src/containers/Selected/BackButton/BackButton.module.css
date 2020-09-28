@@ -1,0 +1,22 @@
+.root {
+    position: fixed;
+    /* height: 8rem;
+    width: 100%; */
+    top: 50px;
+    right: 0;
+}
+.back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 13rem;
+    text-align: center;
+    color: white;
+    background-color: black;
+    font-size: 2rem;
+    z-index: 1;
+    cursor: pointer;
+}
+.back a {
+    text-decoration: none;
+}

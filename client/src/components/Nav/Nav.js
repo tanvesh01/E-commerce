@@ -40,7 +40,15 @@ function ResponsiveDrawer(props) {
             <List>
                 {listOfButtons.map((e) => {
                     return (
-                        <ListItem button onClick={() => props.getItem(e.category)} key={"shoes"}>
+                        <ListItem
+                            button
+                            onClick={() => {
+                                props.getItem(e.category);
+
+                                console.log("getITEM++");
+                            }}
+                            key={e.label}
+                        >
                             <Icon img={e.data} />
                             <Typography style={{ fontSize: "2rem" }} variant="h3">
                                 {e.label}

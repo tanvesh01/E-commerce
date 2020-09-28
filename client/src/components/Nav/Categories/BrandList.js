@@ -53,7 +53,7 @@ function BrandList(props) {
                         {distinctBrands
                             ? distinctBrands.map(function (x) {
                                   return (
-                                      <ListItem button onClick={() => props.setBrand(x)}>
+                                      <ListItem button onClick={() => props.setBrand(x)} key={x}>
                                           <ListItemIcon>
                                               <InboxIcon />
                                           </ListItemIcon>

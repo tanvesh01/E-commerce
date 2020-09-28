@@ -24,3 +24,9 @@
     background-color: black;
     color: white;
 }
+
+@media only screen and (max-width: 600px) {
+    .radio-toolbar {
+        width: 100%;
+    }
+}
