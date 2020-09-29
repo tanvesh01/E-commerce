@@ -38,6 +38,18 @@ const useStyles = makeStyles((theme) => ({
         overflow: "auto",
         zIndex: 99,
     },
+    "@media only screen and (max-width: 600px)": {
+        authModel: {
+            width: "90%",
+            height: "65%",
+        },
+    },
+    "@media only screen and (max-width: 411px)": {
+        authModel: {
+            width: "90%",
+            height: "83%",
+        },
+    },
 }));
 const backdrop = {
     visible: {

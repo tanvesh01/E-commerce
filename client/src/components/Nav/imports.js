@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     },
     appBar: {
         backdropFilter: "saturate(180%) blur(20px)",
-        backgroundColor: "#ffffff40",
+        backgroundColor: "rgba(255,255,255,.9)",
         color: "black",
         zIndex: 99,
     },
@@ -54,8 +54,6 @@ const useStyles = makeStyles((theme) => ({
     toolbar: theme.mixins.toolbar,
     drawerPaper: {
         padding: "1rem",
-        marginLeft: "10px",
-        marginTop: "1rem",
         marginBottom: "20px",
         width: drawerWidth,
         backgroundColor: "white",

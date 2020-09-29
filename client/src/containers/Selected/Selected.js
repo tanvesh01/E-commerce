@@ -89,9 +89,9 @@ function Selected(props) {
     // if (window.innerWidth < 411) {
     //     window.scrollTo(0, 0);
     // }
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    });
+    // useEffect(() => {
+    //     window.scrollTo(0, 0);
+    // });
     return (
         <div className={classes.root}>
             <Grid container>
@@ -133,6 +133,7 @@ function Selected(props) {
                             >
                                 SIZE
                             </Typography>
+                            {/* :::::::: SELECTOR ::::::::: */}
                             <Selector product={prod} />
                         </motion.div>
                         <motion.div className={classes.price} variants={childVariant}>

@@ -6,6 +6,15 @@ import Success from "../OrderForm/Success/Success";
 import OrderForm from "../OrderForm/OrderForm";
 import Cart from "../Cart/Scart";
 const useStyles = makeStyles((theme) => ({
+    root: {
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        overflow: "auto",
+        zIndex: 99,
+    },
     backdrop: {
         zIndex: "100",
         position: "fixed",
@@ -27,6 +36,17 @@ const useStyles = makeStyles((theme) => ({
         width: "60%",
         height: "100%",
         position: "relative",
+    },
+    "@media only screen and (max-width: 600px)": {
+        cartModel: {
+            height: (props) => (props.isSubmit ? "110%" : "80%"),
+            margin: 0,
+            width: "100%",
+        },
+        root: {
+            display: "flex",
+            alignItems: "flex-end",
+        },
     },
 }));
 
@@ -73,7 +93,7 @@ const cartVariant = {
 };
 
 function Modal(props) {
-    const classes = useStyles();
+    const classes = useStyles(props);
     let x = null;
     if (props.submitted) {
         x = <Success />;
@@ -85,17 +105,7 @@ function Modal(props) {
     return (
         <AnimatePresence exitBeforeEnter>
             {props.show ? (
-                <div
-                    style={{
-                        position: "fixed",
-                        top: 0,
-                        left: 0,
-                        width: "100%",
-                        height: "100%",
-                        overflow: "auto",
-                        zIndex: 99,
-                    }}
-                >
+                <div className={classes.root}>
                     <motion.div
                         variants={backdrop}
                         initial="hidden"

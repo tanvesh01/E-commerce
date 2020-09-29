@@ -29,7 +29,7 @@ const validationSchema = yup.object({
     password: yup.string().min(3, "Too short :(").required(),
 });
 function LoginForm(props) {
-    console.log(props);
+    const classes = useStyles();
     const handleSubmit = (email, password) => {
         console.log(props);
         const user = {
@@ -41,9 +41,7 @@ function LoginForm(props) {
     };
     return (
         <div>
-            <Typography variant="h3" style={{ textAlign: "center", fontSize: "4rem" }}>
-                Welcome back
-            </Typography>
+            <p className={classes.welcome}>Welcome</p>
             <div style={{ textAlign: "center", marginBottom: "1.3rem" }}>
                 <Typography variant="p">Log in now to shop anything you want</Typography>
             </div>

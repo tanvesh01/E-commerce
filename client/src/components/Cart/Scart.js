@@ -19,17 +19,18 @@ function Cart(props) {
         <motion.div className={classes.cart}>
             <div className={classes.header}>
                 <div className={classes.heading}>
-                    <Typography variant="h3" style={{ fontSize: "4rem" }}>
-                        Your Cart
-                    </Typography>
+                    <p style={{ margin: 0, fontFamily: "'Bebas Neue', cursive" }}>Your Cart</p>
                 </div>
             </div>
             <div className={classes.info}>
                 <div className={classes.row}>
-                    <div className={`${classes.col} ${classes.labels}`}>
+                    <div className={`${classes.col_prod} ${classes.labels}`}>
                         <p>PRODUCTS</p>
                     </div>
-                    <div className={`${classes.col} ${classes.labels}`}>
+                    <div
+                        style={{}}
+                        className={`${classes.col_price} ${classes.labels} ${classes.label_price} `}
+                    >
                         <p>PRICE</p>
                     </div>
                 </div>
@@ -38,7 +39,7 @@ function Cart(props) {
                 {props.cart.map(function (x, index) {
                     return (
                         <div className={classes.row} style={{ marginTop: "2rem" }}>
-                            <div className={` ${classes.products} ${classes.col}`}>
+                            <div className={` ${classes.products} ${classes.col_prod}`}>
                                 <Product
                                     name={x.name}
                                     brand={x.brand}
@@ -46,7 +47,7 @@ function Cart(props) {
                                     image={x.imageLink}
                                 />
                             </div>
-                            <div className={classes.col}>
+                            <div className={classes.col_price}>
                                 <div
                                     style={{
                                         display: "flex",
@@ -74,16 +75,7 @@ function Cart(props) {
                 <div className={classes.placeOrder}>
                     <div className={classes.col}></div>
                     <div className={classes.subTotal}>
-                        <div
-                            style={{
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center",
-                                marginTop: "2.6rem",
-                                marginBottom: "2.6rem",
-                                color: "#848484",
-                            }}
-                        >
+                        <div className={classes.subText}>
                             SUBTOTAL
                             <span
                                 style={{

@@ -29,6 +29,7 @@ const CustomField = ({ label, type, variant, ...props }) => {
 };
 
 function RegisterForm(props) {
+    const classes = useStyles();
     const handleSubmit = (name, email, password) => {
         const newUser = {
             name: name,
@@ -39,11 +40,9 @@ function RegisterForm(props) {
     };
     return (
         <div>
-            <Typography variant="h3" style={{ textAlign: "center", fontSize: "4rem" }}>
-                Welcome
-            </Typography>
+            <p className={classes.welcome}>Welcome</p>
             <div style={{ textAlign: "center", marginBottom: "1.3rem" }}>
-                <Typography variant="p">Sign un now to shop anything you want</Typography>
+                <Typography variant="p">Sign up now to shop anything you want</Typography>
             </div>
             <Formik
                 initialValues={{ name: "", email: "", password: "" }}

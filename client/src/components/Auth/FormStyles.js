@@ -23,6 +23,17 @@ const useStyles = makeStyles((theme) => ({
             },
         },
     },
+    welcome: {
+        fontSize: "4rem",
+        textAlign: "center",
+        margin: 0,
+        fontFamily: "'Bebas Neue', cursive",
+    },
+    "@media only screen and (max-width: 600px)": {
+        welcome: {
+            fontSize: "3rem",
+        },
+    },
 }));
 
 export { useStyles };

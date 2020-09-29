@@ -28,7 +28,8 @@ import { getItem } from "../../store/actions/products";
 import { toggleCart } from "../../store/actions/orderActions";
 import { toggleAuthModal, logOut } from "../../store/actions/authActions";
 function ResponsiveDrawer(props) {
-    const { window } = props;
+    // const { window } = props;
+    console.log(window.innerWidth);
     const classes = useStyles();
     const theme = useTheme();
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -44,8 +45,9 @@ function ResponsiveDrawer(props) {
                             button
                             onClick={() => {
                                 props.getItem(e.category);
-
-                                console.log("getITEM++");
+                                if (window.innerWidth <= 600) {
+                                    handleDrawerToggle();
+                                }
                             }}
                             key={e.label}
                         >
@@ -63,7 +65,8 @@ function ResponsiveDrawer(props) {
         </div>
     );
 
-    const container = window !== undefined ? () => window().document.body : undefined;
+    const container = undefined;
+    // window !== undefined ? () => window().document.body : undefined;
     const rootVariant = {
         hidden: {
             opacity: 0,
@@ -102,15 +105,7 @@ function ResponsiveDrawer(props) {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <div>
-                        <Typography
-                            variant="h3"
-                            style={{ borderBottom: "6px black solid", height: "52px" }}
-                            noWrap
-                        >
-                            ECORP
-                        </Typography>
-                    </div>
+                    <div></div>
                     <div>
                         <IconButton
                             style={{ marginRight: "0.5rem" }}
@@ -119,12 +114,12 @@ function ResponsiveDrawer(props) {
                             <ShoppingCartOutlinedIcon />
                         </IconButton>
                         {props.isAuth ? (
-                            <>
+                            <div>
                                 {"Welcome back, " + props.user.name + "  "}
                                 <IconButton onClick={() => props.logOut()}>
                                     <ExitToAppIcon />
                                 </IconButton>
-                            </>
+                            </div>
                         ) : (
                             <IconButton onClick={() => props.toggleAuthModal()}>
                                 <FaceIcon />

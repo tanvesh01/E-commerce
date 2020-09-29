@@ -13,9 +13,23 @@ const useStyles = makeStyles((theme) => ({
         width: "60%",
         height: "60%",
     },
+    continue: {
+        backgroundColor: "black",
+        color: "white",
+        width: "50%",
+        marginTop: "1rem",
+    },
     icon: {
         width: "9rem",
         height: "9rem",
+    },
+    "@media only screen and (max-width: 600px)": {
+        root: {
+            width: "90%",
+        },
+        continue: {
+            width: "63%",
+        },
     },
 }));
 
@@ -35,15 +49,7 @@ function Success(props) {
                 <Typography variant="h3">Your order is Confirmed!</Typography>
             </Grid>
             <Grid item xs={12} style={{ textAlign: "center" }}>
-                <Button
-                    style={{
-                        backgroundColor: "black",
-                        color: "white",
-                        width: "50%",
-                        marginTop: "1rem",
-                    }}
-                    onClick={() => props.toggleModel()}
-                >
+                <Button className={classes.continue} style={{}} onClick={() => props.toggleModel()}>
                     Continue Shopping ?
                 </Button>
             </Grid>

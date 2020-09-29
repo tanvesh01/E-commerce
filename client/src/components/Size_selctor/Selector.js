@@ -7,13 +7,9 @@ class Selector extends Component {
         size: this.props.product.sizes,
     };
     changeHandler = (event) => {
-        console.log(event.target.value);
         this.props.selectSize(event.target.value);
     };
     render() {
-        console.log("====================================");
-        console.log(this.props.product);
-        console.log("====================================");
         return (
             <div className="radio-toolbar" onChange={this.changeHandler}>
                 {this.state.size.map((x) => {
