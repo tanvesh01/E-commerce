@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { motion } from "framer-motion";
 import { connect } from "react-redux";
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const transition = {
-    duration: 0.5,
+    duration: 1,
     ease: [0.43, 0.13, 0.23, 0.96],
 };
 
@@ -33,6 +33,7 @@ const imageVariants = {
             ? { opacity: 0, transition }
             : { x: "50%", opacity: 0, transition },
     enter: {
+        x: "0%",
         opacity: 1,
         transition,
     },
@@ -50,7 +51,7 @@ const parentVariant = {
     exit: {
         opacity: 0,
         transition: {
-            duaration: 0.5,
+            duaration: 1,
         },
     },
 };

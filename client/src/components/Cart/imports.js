@@ -82,17 +82,15 @@ const useStyles = makeStyles((theme) => ({
         textAlign: "center",
         display: "flex",
         flexDirection: "row",
-        //left: 0,
         position: "sticky",
         height: "30%",
+        justifyContent: "flex-end",
         width: "100%",
-        //bottom: 0,
     },
     subTotal: {
         borderTop: "5px black solid",
         marginRight: "1rem",
-        flexBasis: "100%",
-        flex: 1,
+        width: "50%",
         fontFamily: "'Bebas Neue', cursive",
         letterSpacing: "2.2px",
         fontWeight: "800",
@@ -111,6 +109,7 @@ const useStyles = makeStyles((theme) => ({
         },
         subTotal: {
             margin: 0,
+            width: "100%",
         },
         label_price: {
             paddingRight: "2rem",

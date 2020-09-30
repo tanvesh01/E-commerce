@@ -106,7 +106,7 @@ function ResponsiveDrawer(props) {
                         <MenuIcon />
                     </IconButton>
                     <div></div>
-                    <div>
+                    <div className={classes.navInfo}>
                         <IconButton
                             style={{ marginRight: "0.5rem" }}
                             onClick={() => props.toggleCart()}
@@ -114,7 +114,12 @@ function ResponsiveDrawer(props) {
                             <ShoppingCartOutlinedIcon />
                         </IconButton>
                         {props.isAuth ? (
-                            <div>
+                            <div
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                }}
+                            >
                                 {"Welcome back, " + props.user.name + "  "}
                                 <IconButton onClick={() => props.logOut()}>
                                     <ExitToAppIcon />

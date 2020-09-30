@@ -30,3 +30,9 @@
         width: 100%;
     }
 }
+
+@media only screen and (max-width: 376px) {
+    .radio-toolbar label {
+        margin-right: 0.6rem;
+    }
+}

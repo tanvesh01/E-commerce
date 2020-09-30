@@ -62,97 +62,58 @@ class Home extends Component {
             >
                 <div
                     style={{
+                        cursor: "pointer",
                         backgroundPosition: "center -5rem",
                         backgroundRepeat: "no-repeat",
                         backgroundImage:
                             'url(" https://images.unsplash.com/photo-1505734169265-a86113baa6c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80")',
                     }}
-                    className={classNames("table__cell", { active: false })}
+                    className={classNames("table__cell", { active: this.state.fashionOpen })}
                     onMouseEnter={this.toggleFashionOpen}
                     onMouseLeave={this.toggleFashionOpen}
                     onClick={() => this.nav("clothing")}
-                >
-                    <span
-                        style={{
-                            transform: "rotate(90deg)",
-                            color: "#01c0db78",
-                            fontSize: "2.875rem",
-                            marginBottom: "16rem",
-                        }}
-                    >
-                        <h1>CLOTHING</h1>
-                    </span>
-                </div>
+                ></div>
 
                 <div
                     style={{
+                        cursor: "pointer",
                         backgroundPosition: "center",
                         backgroundRepeat: "no-repeat",
                         backgroundImage:
                             'url(" https://images.unsplash.com/photo-1491553895911-0055eca6402d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80")',
                     }}
-                    className={classNames("table__cell", { active: false })}
+                    className={classNames("table__cell", { active: this.state.shoesOpen })}
                     onMouseEnter={this.toggleShoesOpen}
                     onMouseLeave={this.toggleShoesOpen}
                     onClick={() => this.nav("shoe")}
-                >
-                    <span
-                        style={{
-                            transform: "rotate(90deg)",
-                            color: "#cacdcc99",
-                            fontSize: "2.875rem",
-                            marginBottom: "16rem",
-                        }}
-                    >
-                        <h1>FOOTWEAR</h1>
-                    </span>
-                </div>
+                ></div>
 
                 <div
                     style={{
+                        cursor: "pointer",
                         backgroundPosition: "center",
                         backgroundRepeat: "no-repeat",
                         backgroundImage:
                             'url(" https://images.unsplash.com/photo-1523206489230-c012c64b2b48?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80")',
                     }}
-                    className={classNames("table__cell", { active: false })}
+                    className={classNames("table__cell", { active: this.state.aceesOpen })}
                     onMouseEnter={this.toggleAceesOpen}
                     onMouseLeave={this.toggleAceesOpen}
                     onClick={() => this.nav("phone")}
-                >
-                    <span
-                        style={{
-                            transform: "rotate(90deg)",
-                            color: "#d8e1eca1",
-                            fontSize: "2.875rem",
-                            marginBottom: "16rem",
-                        }}
-                    >
-                        <h1>PHONES</h1>
-                    </span>
-                </div>
+                ></div>
                 <div
                     style={{
+                        cursor: "pointer",
+                        backgroundPosition: "-12rem",
                         backgroundRepeat: "no-repeat",
                         backgroundImage:
-                            'url(" https://images.unsplash.com/3/www.madebyvadim.com.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1061&q=80")',
+                            'url(" https://images.unsplash.com/flagged/photo-1592500410522-c194f4fa21b2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80")',
                     }}
-                    className={classNames("table__cell", { active: false })}
+                    className={classNames("table__cell", { active: this.state.ElectronicsOpen })}
                     onMouseEnter={this.toggleElectronicsOpen}
                     onMouseLeave={this.toggleElectronicsOpen}
                     onClick={() => this.nav("accessories")}
-                >
-                    <span
-                        style={{
-                            transform: "rotate(90deg)",
-                            color: "#dad8b58a",
-                            fontSize: "2.875rem",
-                            marginBottom: "16rem",
-                        }}
-                    >
-                        <h1>ACCESSORIES</h1>
-                    </span>
-                </div>
+                ></div>
             </motion.div>
         );
     }

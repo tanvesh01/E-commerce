@@ -42,11 +42,11 @@
         margin-top: 7rem;
     }
     .prodImage {
-        width: 23rem;
+        width: 21rem;
     }
 }
 
-@media only screen and (max-width: 361px) {
+@media only screen and (max-width: 376px) {
     .prodImage {
         width: 20rem;
     }

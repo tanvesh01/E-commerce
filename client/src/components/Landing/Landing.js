@@ -1,6 +1,5 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import BgImage from "../../Assets/g10.svg";
 import { motion } from "framer-motion";
 import { Typography } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
@@ -51,19 +50,27 @@ export default function Landing() {
             <div className={classes.row}>
                 <div style={{ flex: 7 }} className={classes.col}>
                     <motion.img
-                        // drag
-                        // dragConstraints={{ left: 0, right: 200, top: 30, bottom: 30 }}
-                        // dragElastic={0.2}
                         whileHover={{
                             position: "relative",
                             zIndex: 1,
-                            background: "white",
-                            scale: [1, 1.4, 1.2],
+                            scale: [1, 1.1, 1.2, 1.3],
                             rotate: [0, 10, -10, 0],
+                            filter: "invert(100%)",
                             transition: {
                                 duration: 0.2,
                             },
                         }}
+                        whileTap={{
+                            position: "relative",
+                            zIndex: 1,
+                            scale: [1, 1.1, 1.2, 1.3],
+                            rotate: [0, 10, -10, 0],
+                            filter: "invert(100%)",
+                            transition: {
+                                duration: 0.2,
+                            },
+                        }}
+                        style={{ boxShadow: "rgb(109 108 114 / 43%) 4px 6px 20px 0px" }}
                         width="90%"
                         height="90%"
                         src="https://images.unsplash.com/photo-1592500213755-7f48adc164a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"

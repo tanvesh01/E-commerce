@@ -20,6 +20,10 @@ import Landing from "../Landing/Landing";
 import ItemGrid from "../Item/ItemGrid/ItemGrid";
 const drawerWidth = 300;
 const useStyles = makeStyles((theme) => ({
+    navInfo: {
+        display: "flex",
+        alignItems: "center",
+    },
     root: {
         display: "flex",
         flexDirection: "column",
@@ -40,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     },
     appBar: {
         backdropFilter: "saturate(180%) blur(20px)",
-        backgroundColor: "rgba(255,255,255,.9)",
+        backgroundColor: "rgba(255,255,255,0.65)",
         color: "black",
         zIndex: 99,
     },

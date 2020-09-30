@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { connect } from "react-redux";
 import Product from "./Product/Product";
-import { Typography, Button, IconButton } from "@material-ui/core";
+import { Button, IconButton } from "@material-ui/core";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import CancelIcon from "@material-ui/icons/Cancel";
 import { deleteFromCart, submitOrder, submitForm } from "../../store/actions/orderActions";

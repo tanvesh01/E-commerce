@@ -20,3 +20,10 @@
 .back a {
     text-decoration: none;
 }
+
+@media only screen and (max-width: 600px) {
+    .back {
+        width: 8rem;
+        font-size: 1.7rem;
+    }
+}

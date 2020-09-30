@@ -9,7 +9,10 @@ const Back = (props) => {
         ease: [0.43, 0.13, 0.23, 0.96],
     };
     const backVariants = {
-        exit: { x: 100, opacity: 0, transition },
+        exit:
+            window.innerWidth <= 414
+                ? { opacity: 0, transition }
+                : { x: 100, opacity: 0, transition },
         enter: { x: 0, opacity: 1, transition: { delay: 1, ...transition } },
     };
     return (
@@ -23,10 +26,11 @@ const Back = (props) => {
                 props.history.goBack();
             }}
         >
+            {/* // eslint-disable-next-line */}
             <a className={classes.back}>
                 {" "}
                 <div style={{ display: "flex" }}>
-                    <KeyboardBackspaceIcon style={{ fontSize: "3rem" }} />
+                    <KeyboardBackspaceIcon style={{ fontSize: "2rem" }} />
                 </div>
                 <div>Back</div>{" "}
             </a>
